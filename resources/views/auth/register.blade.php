@@ -18,6 +18,15 @@
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
+            <!-- Username -->
+            <div class="mt-4">
+                <x-input-label for="username" :value="__('Username')" />
+
+                <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus />
+
+                <x-input-error :messages="$errors->get('username')" class="mt-2" />
+            </div>
+
             <!-- Email Address -->
             <div class="mt-4">
                 <x-input-label for="email" :value="__('Email')" />
@@ -48,6 +57,15 @@
                                 name="password_confirmation" required />
 
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+            </div>
+
+            <!-- Location -->
+            <div class="mt-4">
+                <x-input-label for="location" :value="__('Location')" />
+
+                <x-text-input id="location" class="block mt-1 w-full" type="text" name="location" :value="old('location')" required autofocus />
+
+                <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
