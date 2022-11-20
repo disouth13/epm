@@ -9,103 +9,151 @@
     
     {{-- fontawsome --}}
     <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
+        src="https://kit.fontawesome.com/64d58efce2.js"
+        crossorigin="anonymous">
+    </script>
     
     {{-- link css --}}
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
 </head>
 <body>
     <div class="container">
+        {{-- forms container --}}
         <div class="forms-container">
             <div class="signin-signup">
-                {{-- sign in --}}
-            <form action="" class="sign-in-form">
-                <h2 class="title">Sign in</h2>
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username">
-                </div>
-
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" name="" id="" placeholder="Password">
-                </div>
-
-                <input type="submit" value="Login" class="btn solid">
-
-                <p class="sosial-text">Or Sign in with sosial platforms</p>
-                <div class="social-media">
-                    <a href="#" class="sosial-icon">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-
-                    <a href="#" class="sosial-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
+                
+                {{-- signin page --}}
+                <form action="{{ route('login') }}" method="POST" class="sign-in-form">
+                    @csrf
+                    <h2 class="title">Sign in</h2>
                     
-                    <a href="#" class="sosial-icon">
-                        <i class="fab fa-google"></i>
-                    </a>
-                    <a href="#" class="sosial-icon">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </div>
-            </form>
-            {{-- end sign in --}}
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" name="username" placeholder="Username" required="">
+                    </div>
 
-            {{-- sign up --}}
-            <form action="" class="sign-up-form">
-                <h2 class="title">Sign Up</h2>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Password" required="">
+                    </div>
 
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Name">
-                </div>
+                    <input type="submit" value="Login" class="btn solid">
 
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username">
-                </div>
+                    <p class="social-text">Or Sign in with social platforms</p>
 
-                <div class="input-field">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="email">
-                </div>
+                    <div class="social-media">
+                        <a href="" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
 
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" name="" id="" placeholder="Password">
-                </div>
+                </form>
+                {{-- end --}}
 
-                <input type="submit" value="Sign Up" class="btn solid">
+                {{-- signup page --}}
+                <form action="{{ route('register') }}" method="POST" class="sign-up-form">
+                    @csrf
+                    <h2 class="title">Sign Up</h2>
 
-                <p class="sosial-text">Or Sign up with sosial platforms</p>
-                <div class="social-media">
-                    <a href="#" class="sosial-icon">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-
-                    <a href="#" class="sosial-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="name" name="name" placeholder="Name" required="">
+                    </div>
                     
-                    <a href="#" class="sosial-icon">
-                        <i class="fab fa-google"></i>
-                    </a>
-                    <a href="#" class="sosial-icon">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" name="username" placeholder="Username" required="">
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email"  placeholder="Email" required="">
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Password">
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="text" id="location" name="location" placeholder="Location">
+                    </div>
+
+                    {{-- <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <select class="form-select" name="location" id="location">
+                            <option selected="">Location</option>
+                            <option value="Ketapang">Ketapang</option>
+                            <option value="Manhattan">Manhattan</option>
+                        </select>
+                    </div> --}}
+
+                    <input type="submit" value="Sign up" class="btn solid">
+
+                    <p class="social-text">Or Sign up with social platforms</p>
+
+                    <div class="social-media">
+                        <a href="" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+
+                </form>
+                {{-- end --}}
+
+            </div>
+        </div>
+        {{-- end --}}
+
+
+        {{-- panels-container --}}
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>New Here ?</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                    <button class="btn transparent" id="sign-up-btn">Sign up</button>
                 </div>
-            </form>
-            {{-- end --}}
+
+                {{-- image --}}
+                <img src="{{ asset('frontend/assets/image/login1.svg') }}" class="image">
+            </div>
+
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>Please your Login ?</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                    <button class="btn transparent" id="sign-in-btn">Sign in</button>
+                </div>
+
+                {{-- image --}}
+                <img src="{{ asset('frontend/assets/image/register.svg') }}" class="image" alt="">
             </div>
         </div>
 
-        <div class="panels-container">
-
-        </div>
+        {{-- end --}}
     </div>
+
+    {{-- script --}}
+    <script src="{{ asset('frontend/assets/js/app.js') }}"></script>
 </body>
 </html>
