@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Home\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// admin group controller
+Route::controller(AdminController::class)->group(function () {
+    Route::get('admin/profile', 'Profile')->name('admin-profile');
+});
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.layouts.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';

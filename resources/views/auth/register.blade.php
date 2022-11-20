@@ -59,15 +59,7 @@
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
 
-            <!-- Location -->
-            {{-- <div class="mt-4">
-                <x-input-label for="location" :value="__('Location')" />
-
-                <x-text-input id="location" class="block mt-1 w-full" type="text" name="location" :value="old('location')" required autofocus />
-
-                <x-input-error :messages="$errors->get('name')" class="mt-2" />
-            </div> --}}
-
+            {{-- location --}}
             <div class="mt-4">
                 <x-input-label for="location" :value="__('Location')" />
 
