@@ -12,10 +12,10 @@ class AdminController extends Controller
     //method profile
     public function Profile()
     {
-        $adminID = Auth::user()->id;
-        $adminData = User::find($adminID);
+        $userID = Auth::user()->id;
+        $userData = User::find($userID);
 
-        return view('admin.profile.index', compact('adminData'));
+        return view('admin.profile.index', compact('userData'));
 
     }
 }
