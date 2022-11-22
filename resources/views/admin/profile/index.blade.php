@@ -2,6 +2,11 @@
 
 @section('title', 'Profile')
 
+@push('style-before')
+    <link href="{{ url('https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+@endpush
+
+
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -29,19 +34,16 @@
                             <dd class="col-sm-9">{{ $userData->email }}</dd>
 
                             <dt class="col-sm-3">Location</dt>
-                            <dd class="col-sm-9">{{ $userData->location }}</dd>
-                            
-                            
-                            
+                            <dd class="col-sm-9"><span class="badge text-bg-primary">{{ $userData->location }}</span></dd>
                         </dl>
                         
                         <hr class="sidebar-divider my-0">
 
                         <div class="d-grid mt-4">
-                            <a href="#" class="btn btn-rounded btn-primary btn-sm waves-effect waves-light">
+                            <a href="{{ route('edit-profile') }}" class="btn btn-rounded btn-primary btn-sm waves-effect waves-light">
                               <i class="fas fa-pen-square"></i> Update Profile</a>
                         </div>
-
+                        
                     </div>
                 </div>
             </div>
