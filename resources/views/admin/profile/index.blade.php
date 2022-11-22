@@ -16,25 +16,25 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="form-floating mb-3">
-                            <img src="{{ asset('backend/img/user-auth.jpg') }}" style="width: 200px; height: 200px;" class="img-thumbnail">
+                            <img src="{{ (!empty($userData->image_user)) ? url('upload/user/'.$userData->image_user) : url('upload/no-photo.png') }}" style="width: 200px; height: 200px;" class="img-thumbnail">
                         </div>
                     </div>
     
                     <div class="col-md-4">
                         <dl class="row">
-                            <dt class="col-sm-3">Name</dt>
-                            <dd class="col-sm-9">{{ $userData->name }}</dd>
+                            <dt class="col-sm-4">Name</dt>
+                            <dd class="col-sm-8">{{ $userData->name }}</dd>
                             
-                            <dt class="col-sm-3">Username</dt>
-                            <dd class="col-sm-9">{{ $userData->username }}</dd>
+                            <dt class="col-sm-4">Username</dt>
+                            <dd class="col-sm-8">{{ $userData->username }}</dd>
                             
-                            <dt class="col-sm-3">Email</dt>
-                            <dd class="col-sm-9">{{ $userData->email }}</dd>
+                            <dt class="col-sm-4">Email</dt>
+                            <dd class="col-sm-8">{{ $userData->email }}</dd>
 
-                            <dt class="col-sm-3">Location</dt>
-                            <dd class="col-sm-9"><span class="badge text-bg-primary">{{ $userData->location }}</span></dd>
+                            <dt class="col-sm-4">Location</dt>
+                            <dd class="col-sm-8"><span class="badge text-bg-primary">{{ $userData->location }}</span></dd>
                         </dl>
                         
                         <hr class="sidebar-divider my-0">
