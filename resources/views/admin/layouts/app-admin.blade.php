@@ -16,7 +16,8 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    
+
+   
     {{-- css boostrap 5 --}}
     @stack('style-before')
 
@@ -25,6 +26,11 @@
     
     <!-- Custom styles for this template-->
     <link href="{{ asset('backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+     {{-- toast/sweetalert --}}
+     <link rel="stylesheet" type="text/css" href="{{ url('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css') }}" >
+
+    
 
 </head>
 
@@ -93,7 +99,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="{{ route('admin-logout') }}">Logout</a>
                 </div>
             </div>
         </div>
@@ -115,6 +121,32 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('backend/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('backend/js/demo/chart-pie-demo.js') }}"></script>
+
+     {{-- toast/sweetalert javascript --}}
+     <script type="text/javascript" src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js') }}"></script>
+
+    <script>
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type','info') }}"
+    switch(type){
+        case 'info':
+        toastr.info(" {{ Session::get('message') }} ");
+        break;
+
+        case 'success':
+        toastr.success(" {{ Session::get('message') }} ");
+        break;
+
+        case 'warning':
+        toastr.warning(" {{ Session::get('message') }} ");
+        break;
+
+        case 'error':
+        toastr.error(" {{ Session::get('message') }} ");
+        break; 
+    }
+    @endif 
+    </script>
 
 </body>
 

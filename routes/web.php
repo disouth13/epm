@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Mht\MhtController;
 use App\Http\Controllers\Home\AdminController;
 
 /*
@@ -18,8 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::controller(MhtController::class)->group(function () {
+    Route::get('mht/add/ps', 'AddPs')->name('add-ps');
+});
+
 // admin group controller
 Route::controller(AdminController::class)->group(function () {
+    Route::get('admin/logout', 'destroy')->name('admin-logout');
     Route::get('admin/profile', 'Profile')->name('admin-profile');
     Route::get('admin/profile/edit', 'EditProfile')->name('edit-profile');
     Route::post('admin/profile/store', 'StoreProfile')->name('store-profile');

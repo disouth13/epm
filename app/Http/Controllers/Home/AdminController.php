@@ -10,6 +10,26 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
+
+    // method logout
+    public function destroy(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+         // alert notification
+         $notification = array(
+            'message'       => 'Logout Success!',
+            'alert-type'    => 'success'
+        
+        );
+
+        return redirect('/login')->with($notification);
+    }
+
     //method profile
     public function Profile()
     {
