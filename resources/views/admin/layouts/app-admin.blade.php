@@ -30,8 +30,8 @@
      {{-- toast/sweetalert --}}
      <link rel="stylesheet" type="text/css" href="{{ url('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css') }}" >
 
-    
-
+     {{-- jstable --}}
+     <script src="{{ url('https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js') }}"></script>
 </head>
 
 <body id="page-top">
@@ -147,6 +147,7 @@
     }
     @endif 
     </script>
+    
 
 </body>
 

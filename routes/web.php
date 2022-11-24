@@ -20,7 +20,9 @@ Route::get('/', function () {
 });
 
 Route::controller(MhtController::class)->group(function () {
-    Route::get('mht/add/ps', 'AddPs')->name('add-ps');
+    Route::get('mht/index/psdc', 'IndexPsdc')->name('index-psdc');
+    Route::get('mht/add/psdc', 'AddPsdc')->name('add-psdc');
+    Route::get('mht/store/psdc', 'StorePsdc')->name('store-psdc');
 });
 
 // admin group controller
