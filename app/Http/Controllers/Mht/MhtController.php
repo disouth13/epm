@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Mht;
 
+use Image;
 use App\Models\Psdc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class MhtController extends Controller
 {
@@ -35,31 +37,35 @@ class MhtController extends Controller
                 'kondisi'       =>  'required',
                 'keterangan'    =>  'required',
 
-            ]
+            ],
+
+            
         );
 
          // simpan file gambar
-         $filePhoto = $request->file('photo');
-         $name_generate = hexdec(uniqid()).'.'.$filePhoto->getClientOriginalExtension();
+         $image = $request->file('photo');
+         
+         $name_generate = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
  
          // resize file foto
-         $save_url->save('upload/mht/psdc/'.$name_generate);
+         Image::make($image)->save('upload/mht/psdc/'.$name_generate);
  
          // save url link file 
-         $save_url = 'upload/mht/psdc/'.$name_generate;
+         $saveUrl = 'upload/mht/psdc/'.$name_generate;
+
  
          // save data ke database
          Psdc::insert([
- 
-             'area'        => $request->portfolio_name,
-             'pic'       => $request->portfolio_title,
-             'nmAlat'        => $request->portfolio_desc,
-             'suhu'        => $request->portfolio_desc,
-             'kondisi'        => $request->portfolio_desc,
-             'keterangan'        => $request->portfolio_desc,
-             'photo'       => $save_url,
-             'tglPengecekan' => Carbon::now(),
-             'periode' => Carbon::now()->format('M'),
+             'users_id'     => Auth::user()->id,
+             'area'        => $request->area,
+             'pic'       => $request->pic, 
+             'nmAlat'        => $request->nmAlat,
+             'suhu'        => $request->suhu,
+             'kondisi'        => $request->kondisi,
+             'keterangan'       => $request->keterangan,
+             'photo'       => $saveUrl,
+             'periode' => Carbon::now(),
+             'status' => 'Menunggu Persetujuan',
              'created_at'            => Carbon::now(),
  
          ]);

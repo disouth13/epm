@@ -59,7 +59,7 @@
                                             <td>Yes</td>
                                             <td><span class="badge bg-primary">Primary</span></td>
                                             <td class="text-center">    
-                                              
+                                                <a href="#" class="btn btn-primary btn-sm mb-1" title="View"><i class="bi bi-binoculars-fill"></i></a>
                                                 <a href="#" class="btn btn-info btn-sm mb-1" title="Approve"><i class="bi bi-check-circle-fill"></i></a>
                                                 <a href="#" class="btn btn-warning btn-sm mb-1" title="Edit"><i class="bi bi-pencil-square"></i></a>
                                                 <a href="#" class="btn btn-danger btn-sm mb-1" title="Delete Data" id="delete"><i class="fas fa-trash-alt"></i></a>

@@ -10,6 +10,9 @@
 <script src="{{ url('https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js') }}"></script>
 @endpush
 
+
+
+
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -38,14 +41,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="nmAlat">Nama Alat</label>
-                                <div class="mb-2">
-                                    <a href="#" class="btn btn-info btn-icon-split">
-                                        <span class="icon align-items-start text-white-50">
-                                            <i class="fas fa-info-circle"></i>
-                                        </span> 
-                                        <span class="text" id="nmAlat" name="nmAlat">Honeywell</span>
-                                    </a> <br>
-                                </div>
+                                <input type="text" class="form-control" name="nmAlat" id="nmAlat" value="Honeywell" readonly>
 
                                 <label for="pic">Penanggung Jawab</label>
                                 <input type="text" name="pic" id="pic" class="form-control">
@@ -98,7 +94,10 @@
                                     <option value="Normal">Suhu Ruangan Normal</option>
                                     <option value="Panas">Suhu Ruangan Panas</option>
                                 </select>
-                          
+
+                                <label for="periode" class="col-form-label">Periode Pengecekan</label>
+                                <input type="date" class="form-control" name="periode" id="periode">
+
                                 <label for="photo" class="col-form-label">Foto Perangkat</label>
                                 <input type="file" class="form-control" name="photo" id="photo">
                                 
@@ -139,5 +138,6 @@
     });
 
 </script>
+
     
 @endsection

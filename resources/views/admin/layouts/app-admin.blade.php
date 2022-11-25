@@ -23,6 +23,7 @@
 
     {{-- script --}}
     @stack('script-before')
+
     
     <!-- Custom styles for this template-->
     <link href="{{ asset('backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
@@ -32,6 +33,7 @@
 
      {{-- jstable --}}
      <script src="{{ url('https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js') }}"></script>
+     
 </head>
 
 <body id="page-top">
@@ -147,7 +149,8 @@
     }
     @endif 
     </script>
-    
+
+
 
 </body>
 

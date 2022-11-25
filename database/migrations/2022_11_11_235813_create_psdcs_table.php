@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('kondisi');
             $table->text('keterangan');
             $table->string('photo');
-            $table->date('tglPengecekan');
             $table->date('periode');
             $table->string('status');
             
