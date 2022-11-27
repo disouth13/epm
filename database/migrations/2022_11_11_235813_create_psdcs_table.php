@@ -24,7 +24,6 @@ return new class extends Migration
             $table->text('keterangan');
             $table->string('photo');
             $table->date('periode');
-            $table->string('status');
             
             $table->timestamps();
         });

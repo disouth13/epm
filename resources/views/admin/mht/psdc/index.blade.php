@@ -38,40 +38,54 @@
                             </div>
                             
                             <div class="table-responsive">
-                               <table class="table table-bordered">
+                                <table class="table table-bordered">
                                     <thead class="table-primary">
                                         <tr>
                                             <th style="width: 3%">No.</th>
+                                            <th>PIC</th>
+                                            <th>Nama Alat</th>
                                             <th>Area</th>
                                             <th>Suhu</th>
-                                            <th>Kondisi</th>
+                                            <th>Kondisi Alat</th>
+                                            <th>Keterangan</th>
                                             <th>Periode</th>
-                                            <th>Status</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody> 
+
+                                        @php($i = 1)
+
+                                        @foreach ($psdcIndexGetData as $psdcItem)
                                         <tr>
-                                            <td>1</td>
-                                            <td>USA</td>
-                                            <td>Female</td>
-                                            <td>Yes</td>
-                                            <td>Yes</td>
-                                            <td><span class="badge bg-primary">Primary</span></td>
+                                            <td>{{ $i++ }}</td>
+                                            <td>{{ $psdcItem->pic }}</td>
+                                            <td>{{ $psdcItem->nmAlat }}</td>
+                                            <td>{{ $psdcItem->area }}</td>
+                                            <td>{{ $psdcItem->suhu }}</td>
+                                            <td>{{ $psdcItem->kondisi }}</td>
+                                            <td>
+                                                <?php if($psdcItem['keterangan'] == 'Suhu Ruangan Normal')
+
+                                                { ?> <span class="badge badge-success"><?php echo $psdcItem['keterangan']; ?></span>
+                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $psdcItem['keterangan']; ?></span>
+                                                <?php }  ?>
+                                                
+                                            </td>
+                                            <td>{{ date('F Y',strtotime($psdcItem->periode)) }}</td>
                                             <td class="text-center">    
-                                                <a href="#" class="btn btn-primary btn-sm mb-1" title="View"><i class="bi bi-binoculars-fill"></i></a>
-                                                <a href="#" class="btn btn-info btn-sm mb-1" title="Approve"><i class="bi bi-check-circle-fill"></i></a>
-                                                <a href="#" class="btn btn-warning btn-sm mb-1" title="Edit"><i class="bi bi-pencil-square"></i></a>
-                                                <a href="#" class="btn btn-danger btn-sm mb-1" title="Delete Data" id="delete"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="{{ route('view-psdc', $psdcItem->id) }}" class="btn btn-primary btn-sm mb-1" title="View"><i class="bi bi-binoculars-fill"></i></a>
+                                                <a href="{{ route('edit-psdc', $psdcItem->id) }}" class="btn btn-warning btn-sm mb-1" title="Update"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="{{ route('delete-psdc', $psdcItem->id) }}" class="btn btn-danger btn-sm mb-1" title="Delete" id="delete"><i class="fas fa-trash-alt"></i></a>
                                                 
                                             </td>
                                         </tr>
+                                        @endforeach
 
-                                        
+                                    
 
-                                      
                                     </tbody>
-                               </table>
+                                </table>
                             </div>
                         
                 </div>

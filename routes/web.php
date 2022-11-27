@@ -22,7 +22,12 @@ Route::get('/', function () {
 Route::controller(MhtController::class)->group(function () {
     Route::get('mht/index/psdc', 'IndexPsdc')->name('index-psdc');
     Route::get('mht/add/psdc', 'AddPsdc')->name('add-psdc');
+    Route::get('mht/view/psdc/{id}', 'ViewPsdc')->name('view-psdc');
     Route::post('mht/store/psdc', 'StorePsdc')->name('store-psdc');
+    Route::get('mht/edit/psdc/{id}', 'EditPsdc')->name('edit-psdc');
+    Route::post('mht/edit/psdc', 'UpdatePsdc')->name('update-psdc');
+    Route::get('mht/delete/psdc/{id}', 'DeletePsdc')->name('delete-psdc');
+
 });
 
 // admin group controller

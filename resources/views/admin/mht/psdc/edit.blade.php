@@ -10,9 +10,6 @@
 <script src="{{ url('https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js') }}"></script>
 @endpush
 
-
-
-
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -35,20 +32,31 @@
 
 
 
-                <form action="{{ route('store-psdc') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('update-psdc') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+
+                        <input type="hidden" name="id" value="{{ $ambilDataPsdc->id }}">
+                        <input type="hidden" name="usersid" id="userid" value="{{ $ambilDataPsdc->users_id }}">
 
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="nmAlat">Nama Alat</label>
-                                <input type="text" class="form-control" name="nmAlat" id="nmAlat" value="Honeywell" readonly>
+                                <input type="text" class="form-control" name="nmAlat" id="nmAlat" value="{{ $ambilDataPsdc->nmAlat }}" readonly>
+                                @error('nmAlat')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
 
                                 <label for="pic">Penanggung Jawab</label>
-                                <input type="text" name="pic" id="pic" class="form-control">
+                                <input type="text" name="pic" id="pic" class="form-control"  value="{{ $ambilDataPsdc->pic }}">
+                                @error('pic')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
 
                                 <label for="area" class="col-form-label">Area</label>
                                 <select id="area" name="area" class="form-control form-select">
-                                    <option selected>Pilih Area</option>
+                                    <option selected>{{ $ambilDataPsdc->area }}</option>
                                     <option value="26A">26 A</option>
                                     <option value="26B">26 B</option>
                                     <option value="27A">27 A</option>
@@ -60,12 +68,15 @@
                                     <option value="30A">30 A</option>
                                     <option value="30B">30 B</option>
                                 </select>
+                                @error('area')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
 
 
                                 <label for="suhu" class="col-form-label">Suhu Ruangan</label>
                                 
                                 <select id="suhu" name="suhu" class="form-control form-select">
-                                    <option selected>Pilih Suhu</option>
+                                    <option selected>{{ $ambilDataPsdc->suhu }}</option>
                                     <option value="16&#176;">16&#176;</option>
                                     <option value="17&#176;">17&#176;</option>
                                     <option value="18&#176;">18&#176;</option>
@@ -78,26 +89,38 @@
                                     <option value="25&#176;">25&#176;</option>
                                     <option value="26&#176;">26&#176;</option>
                                 </select>
+                                @error('suhu')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               
                                
                                 <label for="kondisi" class="col-form-label">Kondisi Alat</label>
                                 <select id="kondisi" name="kondisi" class="form-control form-select">
-                                    <option selected>Pilih Alat</option>
+                                    <option selected>{{ $ambilDataPsdc->kondisi }}</option>
                                     <option value="Berfungsi">Berfungsi</option>
                                     <option value="Tidak Berfungsi">Tidak Berfungsi</option>
                                     <option value="Tidak Terpasang">Alat Tidak Terpasang</option>
                                 </select>
-                              
+                                @error('kondisi')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            
 
                                 <label for="keterangan" class="col-form-label">Keterangan</label>
                                 <select id="keterangan" name="keterangan" class="form-control form-select">
-                                    <option selected>Pilih Keterangan</option>
+                                    <option selected>{{ $ambilDataPsdc->keterangan }}</option>
                                     <option value="Suhu Ruangan Normal">Suhu Ruangan Normal</option>
                                     <option value="Suhu Ruangan Panas">Suhu Ruangan Panas</option>
                                 </select>
+                                @error('keterangan')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
 
                                 <label for="periode" class="col-form-label">Periode Pengecekan</label>
-                                <input type="date" class="form-control" name="periode" id="periode">
+                                <input type="date" class="form-control" name="periode" id="periode" value="{{ $ambilDataPsdc->periode }}">
+                                @error('periode')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
 
                                 <label for="photo" class="col-form-label">Foto Perangkat</label>
                                 <input type="file" class="form-control" name="photo" id="photo">
@@ -106,14 +129,14 @@
 
                             <div class="col-md-6">
                                 <label for="photo" class="col-form-label"></label>
-                                <img id="showImage" class="img-fluid img-thumbnail" src="{{ url('upload/no-photo.png') }}" style="width: 500px; height: auto;" >
+                                <img id="showImage" class="img-fluid img-thumbnail" src="{{ asset($ambilDataPsdc->photo) }}" style="width: 500px; height: auto;" >
                             </div>
                             
                         </div>
 
                         <div class="row">
                             <div class="col-md-3 mb-2">
-                                <input type="submit" class="btn btn-primary btn-block" value="Save Data">
+                                <input type="submit" class="btn btn-primary btn-block" value="Update Data">
                             </div>
 
                             <div class="col-md-3">
@@ -139,6 +162,4 @@
     });
 
 </script>
-
-    
 @endsection
