@@ -19,13 +19,10 @@ return new class extends Migration
             $table->integer('users_id')->nullable();
             $table->string('area');
             $table->string('pic');
-            $table->text('keterangan');
             $table->string('photoBefore');
             $table->string('photoAfter');
-            $table->date('tglPengecekan');
+            $table->text('keterangan');
             $table->date('periode');
-            $table->string('kondisi');
-            $table->string('status');
 
             $table->timestamps();
         });

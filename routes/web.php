@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Mht\MhtController;
+use App\Http\Controllers\Mht\PrsController;
 use App\Http\Controllers\Home\AdminController;
 
 /*
@@ -19,6 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// group manhattan PSDC
 Route::controller(MhtController::class)->group(function () {
     Route::get('mht/index/psdc', 'IndexPsdc')->name('index-psdc');
     Route::get('mht/add/psdc', 'AddPsdc')->name('add-psdc');
@@ -28,6 +31,14 @@ Route::controller(MhtController::class)->group(function () {
     Route::post('mht/edit/psdc', 'UpdatePsdc')->name('update-psdc');
     Route::get('mht/delete/psdc/{id}', 'DeletePsdc')->name('delete-psdc');
 
+});
+
+// group manhattan PRS
+Route::controller(PrsController::class)->group(function () {
+    Route::get('mht/index/prs', 'IndexPrs')->name('index-prs');
+    Route::get('mht/add/prs', 'AddPrs')->name('add-prs');
+    Route::post('mht/store/prs', 'StorePrs')->name('store-prs');
+    Route::get('mht/view/prs/{id}', 'ViewPrs')->name('view-prs');
 });
 
 // admin group controller

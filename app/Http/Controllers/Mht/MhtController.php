@@ -49,8 +49,6 @@ class MhtController extends Controller
 
             ],
 
-
-
             
         );
 
