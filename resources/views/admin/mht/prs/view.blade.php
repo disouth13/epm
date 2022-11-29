@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card mb-3">
-                            <img src="{{ asset($viewDataPrs->photoBefore) }}" class="card-img-top img-fluid img-thumbnail" alt="...">
+                            <img src="{{ asset($viewDataPrs->photoBefore) }}" class="card-img-top img-fluid img-thumbnail">
                             <div class="card-body">
                             <button class=" btn btn-block btn-warning">Foto Sebelum</button>
                             </div>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="card">
-                            <img src="{{ asset($viewDataPrs->photoAfter) }}" class="card-img-top img-fluid img-thumbnail" alt="...">
+                            <img src="{{ asset($viewDataPrs->photoAfter) }}" class="card-img-top img-fluid img-thumbnail">
                             <div class="card-body">
                                 <button class=" btn btn-block btn-info">Foto Sesudah</button>
                             </div>

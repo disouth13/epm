@@ -28,27 +28,79 @@
                 @endif
 
                 <div class="row">
-                    <div class="col-md-6">
-                        <img src="{{ asset($viewPsdcData->photo) }}" class="img-fluid img-thumbnail mb-2">
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <img src="{{ asset($viewPsdcData->photo) }}" class="card-img-top img-fluid img-thumbnail mb-2">
+                            <div class="card-body">
+                            <button class=" btn btn-block btn-warning">Foto Perangkat {{ $viewPsdcData->nmAlat }}</button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-md-6">
-                        <ul class="list-unstyled">
-                            <li><p><strong>Pengecekan Ruangan Server {{ $viewPsdcData->area }} - {{ $viewPsdcData->pic }}</strong></p></li>
-                            <li>Hasil Pengecekan :
-                                <ul>
-                                    <li>Merek {{ $viewPsdcData->nmAlat }}</li>
-                                    <li>Suhu {{ $viewPsdcData->suhu }}</li>
-                                    <li>Kondisi {{ $viewPsdcData->kondisi }}</li>
-                                    <li>{{ $viewPsdcData->keterangan }}</li>
-                                    <li>Periode <span class="badge badge-primary">{{ date('F Y',strtotime($viewPsdcData->periode)) }}</li>
-                                    
-                                </ul>
-                            </li>
-                        
-                            <!-- Divider -->
-                            <hr class="sidebar-divider">
-                        </ul>
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                        Keterangan
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                    <div class="accordion-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                        <tr>
+                                                            <th>PIC</th>
+                                                            <td>{{ $viewPsdcData->pic }}</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <th>Nama Alat</th>
+                                                            <td>{{ $viewPsdcData->nmAlat }}</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <th>Kondisi Alat</th>
+                                                            <td>{{ $viewPsdcData->area }}</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <th>Area</th>
+                                                            <td>{{ $viewPsdcData->area }}</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <th>Suhu</th>
+                                                            <td>{{ $viewPsdcData->suhu }}</td>
+                                                        </tr>
+
+                                       
+                                                        <tr>
+                                                            <th>Keterangan</th>
+                                                            <td>
+                                                                <?php if($viewPsdcData['keterangan'] == 'Suhu Ruangan Normal')
+
+                                                                { ?> <span class="badge badge-success"><?php echo $viewPsdcData['keterangan']; ?></span>
+                                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $viewPsdcData['keterangan']; ?></span>
+                                                                <?php }  ?>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <th>Periode</th>
+                                                            <td> {{ date('F Y',strtotime($viewPsdcData->periode)) }} </td>
+                                                        </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                       
 
                         
                     </div>

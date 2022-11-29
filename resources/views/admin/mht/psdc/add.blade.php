@@ -100,13 +100,19 @@
                                 <input type="date" class="form-control" name="periode" id="periode">
 
                                 <label for="photo" class="col-form-label">Foto Perangkat</label>
-                                <input type="file" class="form-control" name="photo" id="photo">
+                                <input type="file" class="form-control mb-2" name="photo" id="photo">
                                 
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <label for="photo" class="col-form-label"></label>
-                                <img id="showImage" class="img-fluid img-thumbnail" src="{{ url('upload/no-photo.png') }}" style="width: 500px; height: auto;" >
+                                <div class="card">
+                                    <img src="{{ url('upload/no-photo.png') }}" class="card-img-top img-fluid img-thumbnail" id="showImage" >
+                                    <div class="card-body">
+                                        <p class="card-text"><span class="badge rounded-pill bg-warning">Foto Perangkat</span></p>
+                                    </div>
+                                </div>
+                              
                             </div>
                             
                         </div>

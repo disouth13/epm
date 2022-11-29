@@ -58,7 +58,7 @@ class MhtController extends Controller
         $name_generate = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
         // resize file foto
-        Image::make($image)->save('upload/mht/psdc/'.$name_generate);
+        Image::make($image)->resize(518, 444)->save('upload/mht/psdc/'.$name_generate);
 
         // save url link file 
         $saveUrl = 'upload/mht/psdc/'.$name_generate;
@@ -128,7 +128,7 @@ class MhtController extends Controller
             $name_generate = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
             // image intervantion
-            Image::make($image)->save('upload/mht/psdc/'.$name_generate);
+            Image::make($image)->resize(518, 444)->save('upload/mht/psdc/'.$name_generate);
 
             $saveUrl = 'upload/mht/psdc/'.$name_generate;
 

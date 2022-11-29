@@ -127,9 +127,15 @@
                                 
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="photo" class="col-form-label"></label>
-                                <img id="showImage" class="img-fluid img-thumbnail" src="{{ asset($ambilDataPsdc->photo) }}" style="width: 500px; height: auto;" >
+                                <div class="card">
+                                    <img src="{{ asset($ambilDataPsdc->photo) }}" class="card-img-top img-fluid img-thumbnail" id="showImage" >
+                                    <div class="card-body">
+                                        <p class="card-text"><span class="badge rounded-pill bg-warning">Foto Perangkat {{ $ambilDataPsdc->nmAlat }}</span></p>
+                                    </div>
+                                </div>
+
                             </div>
                             
                         </div>
