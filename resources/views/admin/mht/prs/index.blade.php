@@ -75,7 +75,7 @@
                                             <td>{{ date('F Y',strtotime($prsItem->periode)) }}</td>
                                             <td class="text-center">    
                                                 <a href="{{ route('view-prs', $prsItem->id) }}" class="btn btn-primary btn-sm mb-1" title="View"><i class="bi bi-binoculars-fill"></i></a>
-                                                <a href="#" class="btn btn-warning btn-sm mb-1" title="Update"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="{{ route('edit-prs', $prsItem->id) }}" class="btn btn-warning btn-sm mb-1" title="Update"><i class="bi bi-pencil-square"></i></a>
                                                 <a href="#" class="btn btn-danger btn-sm mb-1" title="Delete" id="delete"><i class="fas fa-trash-alt"></i></a>
                                                 
                                             </td>

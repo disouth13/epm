@@ -39,6 +39,8 @@ Route::controller(PrsController::class)->group(function () {
     Route::get('mht/add/prs', 'AddPrs')->name('add-prs');
     Route::post('mht/store/prs', 'StorePrs')->name('store-prs');
     Route::get('mht/view/prs/{id}', 'ViewPrs')->name('view-prs');
+    Route::get('mht/edit/prs/{id}', 'EditPrs')->name('edit-prs');
+    Route::post('mht/update/prs', 'UpdatePrs')->name('update-prs');
 });
 
 // admin group controller

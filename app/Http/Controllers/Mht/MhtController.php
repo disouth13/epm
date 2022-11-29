@@ -101,7 +101,7 @@ class MhtController extends Controller
         // validasi form
         $request->validate(
             [   
-                
+                'area'                  => 'required',
                 'nmAlat'                => 'required',        
                 'pic'                   => 'required',        
                 'suhu'                  => 'required',        
@@ -111,12 +111,12 @@ class MhtController extends Controller
             ],
 
             [
-                
+                'area.required'         => 'Data area belum Pilih',
                 'nmAlat.required'       => 'Nama Alat tidak ditemukan',
                 'pic.required'          => 'Data Pic tidak ditemukan',
-                'suhu.required'         =>  'Data Suhu tidak ditemukan',
-                'kondisi.required'      =>  'Data Kondisi tidak ditemukan',
-                'periode.required'      =>  'Tanggal Periode tidak ditemukan'                  
+                'suhu.required'         => 'Data Suhu tidak ditemukan',
+                'kondisi.required'      => 'Data Kondisi tidak ditemukan',
+                'periode.required'      => 'Tanggal Periode tidak ditemukan'                  
             ],
 
         );
@@ -135,6 +135,7 @@ class MhtController extends Controller
             Psdc::findOrFail($updatePsdcID)->update([
                 // nama dari database               nama dari form
                 'users_id'          => Auth::user()->id,
+                'area'              => $request->area,
                 'nmAlat'            => $request->nmAlat,
                 'pic'               => $request->pic,
                 'suhu'              => $request->suhu,
@@ -154,6 +155,7 @@ class MhtController extends Controller
             Psdc::findOrFail($updatePsdcID)->update([
                 // nama dari database               nama dari form
                 'users_id'          => Auth::user()->id,
+                'area'              => $request->area,
                 'nmAlat'            => $request->nmAlat,
                 'pic'               => $request->pic,
                 'suhu'              => $request->suhu,
