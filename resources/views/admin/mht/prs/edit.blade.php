@@ -37,7 +37,8 @@
 
                         <input type="hidden" name="id" value="{{ $ambilDataPrs->id }}">
                         <input type="hidden" name="usersid" id="userid" value="{{ $ambilDataPrs->users_id }}">
-
+                        <input type="hidden" name="oldImageBefore" value="{{ $ambilDataPrs->photoBefore }}">
+                        <input type="hidden" name="oldImageAfter" value="{{ $ambilDataPrs->photoAfter }}">
 
                             <div class="row mb-3">
                                 <div class="col-md-5">

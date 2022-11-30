@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PrsController extends Controller
 {
@@ -104,7 +105,8 @@ class PrsController extends Controller
         // validasi form
         $request->validate(
             [   
-                
+                'photoBefore'               => 'required',
+                'photoAfter'                => 'required',
                 'area'                      => 'required',
                 'pic'                       => 'required',
                 'keterangan'                => 'required',
@@ -114,6 +116,8 @@ class PrsController extends Controller
 
             [
            
+                'photoBefore.required'          => 'Foto Berfore belum di upload',
+                'photoAfter.required'           => 'Foto After belum di upload',
                 'area.required'                 => 'Data area belum Pilih',
                 'pic.required'                  => 'Data Pic tidak ditemukan',
                 'keterangan.required'           => 'Data keterangan belum di pilih',
@@ -121,8 +125,16 @@ class PrsController extends Controller
             ]
         );
 
+
+
         // fungsi conditional
         if ($request->file('photoBefore')) {
+
+            $delete = Prs::find($updateDataPrsID);
+
+            unlink('upload/mht/prs/before/'.$delete->photoBefore);
+            $delete->delete();
+
             $imageBefore = $request->file('photoBefore');
             $name_generate = hexdec(uniqid()).'.'.$imageBefore->getClientOriginalExtension();
 
@@ -134,6 +146,10 @@ class PrsController extends Controller
         };
         
         if ($request->file('photoAfter')) {
+            $delete2 = Prs::find($updateDataPrsID);
+            unlink('upload/mht/prs/after/'.$delete2->photoAfter);
+            $delete2->delete();
+
             $imageAfter = $request->file('photoAfter');
             $name_generate = hexdec(uniqid()).'.'.$imageAfter->getClientOriginalExtension();
 
@@ -190,6 +206,12 @@ class PrsController extends Controller
     
             return redirect()->route('index-prs')->with($notification);
         };
+           
+            
+
+            
+
+    
         
     } //end method
 }
