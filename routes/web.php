@@ -51,7 +51,7 @@ Route::controller(PfeController::class)->group(function () {
     Route::get('mht/index/pfe', 'IndexPfe')->name('index-pfe');
     Route::get('mht/add/pfe', 'AddPfe')->name('add-pfe');
     Route::post('mht/store/pfe', 'StorePfe')->name('store-pfe');
-    Route::post('mht/view/pfe/{id}', 'ViewPfe')->name('view-pfe');
+    Route::get('mht/view/pfe/{id}', 'ViewPfe')->name('view-pfe');
 });
 
 // admin group controller

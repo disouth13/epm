@@ -93,9 +93,9 @@ class PfeController extends Controller
     } //end method storePfe
 
 
-    public function ViewPfe()
+    public function ViewPfe($id)
     {
-        $viewDataPfe = Pfe::findOfFaile($id);
+        $viewDataPfe = Pfe::findOfFail($id);
         return view('admin.mht.pfe.view', compact('viewDataPfe'));
     }
 
