@@ -10,4 +10,7 @@ class Pfe extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    // table plural atau tidak ada huruf s dibelakang
+    protected $table = 'pfe';
 }

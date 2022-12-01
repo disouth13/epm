@@ -22,9 +22,10 @@ return new class extends Migration
             $table->string('type');
             $table->text('keterangan');
             $table->string('photo');
-            $table->date('periode');
             $table->string('kondisi');
-            $table->string('status');
+            $table->date('periode');
+            
+            
 
             $table->timestamps();
         });

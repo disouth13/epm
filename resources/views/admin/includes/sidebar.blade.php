@@ -38,7 +38,7 @@
                 <h6 class="collapse-header">Preventif EDC Manhattan</h6>
                 <a class="collapse-item" href="{{ route('index-psdc') }}">Pengecekan Suhu</a>
                 <a class="collapse-item" href="{{ route('index-prs') }}">Ruang Server</a>
-                <a class="collapse-item" href="cards.html">Pengecekan Apar</a>
+                <a class="collapse-item" href="{{ route('index-pfe') }}">Pengecekan Apar</a>
                 <a class="collapse-item" href="cards.html">Pengecekan AC</a>
                 <a class="collapse-item" href="cards.html">Pengecekan UPS</a>
                 <hr>

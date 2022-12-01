@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Mht\MhtController;
+use App\Http\Controllers\Mht\PfeController;
 use App\Http\Controllers\Mht\PrsController;
 use App\Http\Controllers\Home\AdminController;
 
@@ -42,6 +43,15 @@ Route::controller(PrsController::class)->group(function () {
     Route::get('mht/edit/prs/{id}', 'EditPrs')->name('edit-prs');
     Route::post('mht/update/prs', 'UpdatePrs')->name('update-prs');
     Route::get('mht/delete/prs/{id}', 'DeletePrs')->name('delete-prs');
+});
+
+
+// group manhattan PFE
+Route::controller(PfeController::class)->group(function () {
+    Route::get('mht/index/pfe', 'IndexPfe')->name('index-pfe');
+    Route::get('mht/add/pfe', 'AddPfe')->name('add-pfe');
+    Route::post('mht/store/pfe', 'StorePfe')->name('store-pfe');
+    Route::post('mht/view/pfe/{id}', 'ViewPfe')->name('view-pfe');
 });
 
 // admin group controller
