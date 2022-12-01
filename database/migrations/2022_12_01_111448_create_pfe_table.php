@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pes', function (Blueprint $table) {
+        Schema::create('pfe', function (Blueprint $table) {
             $table->id();
 
             $table->integer('users_id')->nullable();
@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('type');
             $table->text('keterangan');
             $table->string('photo');
-            $table->date('tglPengecekan');
             $table->date('periode');
             $table->string('kondisi');
             $table->string('status');
@@ -38,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pes');
+        Schema::dropIfExists('pfe');
     }
 };

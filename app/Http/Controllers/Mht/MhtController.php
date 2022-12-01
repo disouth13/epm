@@ -124,6 +124,10 @@ class MhtController extends Controller
 
         //fungsi conditional
         if ($request->file('photo')) {
+
+            $imageDel = Psdc::findOrFail($updatePsdcID);
+            unlink($imageDel->photo);
+
             $image = $request->file('photo');
             $name_generate = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 

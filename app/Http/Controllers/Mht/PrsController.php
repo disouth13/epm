@@ -130,10 +130,8 @@ class PrsController extends Controller
         // fungsi conditional
         if ($request->file('photoBefore')) {
 
-            $delete = Prs::find($updateDataPrsID);
-
-            unlink('upload/mht/prs/before/'.$delete->photoBefore);
-            $delete->delete();
+            $imageDelBefore = Prs::findOrFail($updateDataPrsID);
+            unlink($imageDelBefore->photoBefore);
 
             $imageBefore = $request->file('photoBefore');
             $name_generate = hexdec(uniqid()).'.'.$imageBefore->getClientOriginalExtension();
@@ -146,9 +144,9 @@ class PrsController extends Controller
         };
         
         if ($request->file('photoAfter')) {
-            $delete2 = Prs::find($updateDataPrsID);
-            unlink('upload/mht/prs/after/'.$delete2->photoAfter);
-            $delete2->delete();
+           
+            $imageDelAfter = Prs::findOrFail($updateDataPrsID);
+            unlink($imageDelAfter->photoAfter);
 
             $imageAfter = $request->file('photoAfter');
             $name_generate = hexdec(uniqid()).'.'.$imageAfter->getClientOriginalExtension();
@@ -183,35 +181,30 @@ class PrsController extends Controller
             return redirect()->route('index-prs')->with($notification);
 
 
-        }else{
-
-
-            // update data
-            Prs::findOrFail($updateDataPrsID)->update([
-
-                // namadariDB      nmdariForm
-                'users_id'      => Auth::user()->id,
-                'area'          => $request->area,
-                'pic'           => $request->pic,
-                'keterangan'    => $request->keterangan,
-                'periode'       => $request->periode,
-                'created_at'     => Carbon::now(),
-            ]);
-
-            // notif message
-            $notification = array(
-                'message'       =>  'Data berhasil di ubah',
-                'alert-type'    =>  'success'
-            );
-    
-            return redirect()->route('index-prs')->with($notification);
         };
            
-            
-
-            
-
-    
         
     } //end method
+
+    public function DeletePrs($id)
+    {
+
+        $deletePrsID = Prs::findOrFail($id);
+        $imgDeleteBefore = $deletePrsID->photoBefore;
+        unlink($imgDeleteBefore);
+
+      
+        $imgDeleteAfter = $deletePrsID->photoAfter;
+        unlink($imgDeleteAfter);
+
+        Prs::findOrFail($id)->delete();
+
+        $notification = array(
+            'message'       =>  'Data berhasil dihapus!',
+            'alert-type'    =>  'success',
+
+        );
+
+        return redirect()->back()->with($notification);
+    }
 }
