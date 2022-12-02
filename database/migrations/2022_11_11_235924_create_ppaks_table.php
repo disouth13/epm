@@ -22,11 +22,9 @@ return new class extends Migration
             $table->string('merek');
             $table->string('suhu');
             $table->text('keterangan');
-            $table->date('tglPengecekan');
-            $table->date('periode');
             $table->string('photo');
             $table->string('kondisi');
-            $table->string('status');
+            $table->date('periode');
             
             $table->timestamps();
         });

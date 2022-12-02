@@ -12,112 +12,96 @@
     <div class="col-md-12">
         <div class="card shadow mb-4 border-left-primary">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">@yield('title')</h6>
+                <h6 class="m-0 font-weight-bold text-primary">@yield('title') - Ruangan Server {{ $viewDataPfe->area }}</h6>
             </div>
             <div class="card-body">
 
-                {{-- error handling --}}
-                @if (count($errors))
-                    @foreach ($errors->all() as $error )
-                    <p class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="mdi mdi-block-helper me-2"></i>
-                            {{ $error }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </p>
-                    @endforeach
-                @endif
-
-
-
-                <form action="{{ route('store-pfe') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-
-                        <div class="row mb-3">
-                            <div class="col-md-5">
-
-                                <label for="pic">Penanggung Jawab</label>
-                                <input type="text" name="pic" id="pic" class="form-control">
-
-                                <label for="area" class="col-form-label">Area</label>
-                                <select id="area" name="area" class="form-control form-select">
-                                    <option selected>Pilih Area</option>
-                                    <option value="26A">26 A</option>
-                                    <option value="26B">26 B</option>
-                                    <option value="27A">27 A</option>
-                                    <option value="27B">27 B</option>
-                                    <option value="28A">28 A</option>
-                                    <option value="28B">28 B</option>
-                                    <option value="29A">29 A</option>
-                                    <option value="29B">29 B</option>
-                                    <option value="30A">30 A</option>
-                                    <option value="30B">30 B</option>
-                                </select>
-
-                                <label for="type" class="col-form-label">Type Apar</label>
-                                <input type="text" name="type" id="type" class="form-control" value="Fire Extinguisher SERVVO" readonly>
-
-                                <label for="kondisi" class="col-form-label">Kondisi Apar</label>
-                                <select id="kondisi" name="kondisi" class="form-control form-select">
-                                    <option selected>Pilih Kondisi Apar</option>
-                                    <option value="Kondisi Apar Baik">Kondisi Apar Baik</option>
-                                    <option value="Kondisi Apar Tidak Ada">Kondisi Apar Tidak Ada</option>
-                                </select>
-
-                                <label for="keterangan" class="col-form-label">Keterangan</label>
-                                <select id="keterangan" name="keterangan" class="form-control form-select">
-                                    <option selected>Pilih Keterangan</option>
-                                    <option value="Apar Tersedia">Apar Tersedia</option>
-                                    <option value="Proses Pengisian Ulang">Proses Pengisian Ulang</option>
-                                </select>
-
-                                <label for="periode" class="col-form-label">Periode Pengecekan</label>
-                                <input type="date" class="form-control" name="periode" id="periode">
-
-                                <label for="photo" class="col-form-label">Foto Sebelum</label>
-                                <input type="file" class="form-control" name="photo" id="photo">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <img src="{{ asset($viewDataPfe->photo) }}" class="card-img-top img-fluid img-thumbnail mb-2">
+                            <div class="card-body">
+                            <button class=" btn btn-block btn-warning">Foto Perangkat {{ $viewDataPfe->type }}</button>
                             </div>
+                        </div>
+                    </div>
 
-                            <div class="col-md-3 mr-2 mt-3">
-                            
-                                <div class="card">
-                                    <img src="{{ url('upload/no-photo.png') }}" class="card-img-top img-fluid" id="showImageSebelum" style="height: 450px;">
-                                    <div class="card-body">
-                                        <p class="card-text"><span class="badge badge-warning">Foto Apar</span></p>
+                    <div class="col-md-6">
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                        Keterangan
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                    <div class="accordion-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                        <tr>
+                                                            <th>PIC</th>
+                                                            <td>{{ $viewDataPfe->pic }}</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <th>Type Apar</th>
+                                                            <td>{{ $viewDataPfe->type }}</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <th>Kondisi Alat</th>
+                                                            <td>{{ $viewDataPfe->kondisi }}</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <th>Area</th>
+                                                            <td>{{ $viewDataPfe->area }}</td>
+                                                        </tr>
+
+                    
+
+                                       
+                                                        <tr>
+                                                            <th>Keterangan</th>
+                                                            <td>
+                                                                <?php if($viewDataPfe['keterangan'] == 'Apar Tersedia')
+
+                                                                { ?> <span class="badge badge-success"><?php echo $viewDataPfe['keterangan']; ?></span>
+                                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $viewDataPfe['keterangan']; ?></span>
+                                                                <?php }  ?>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <th>Periode</th>
+                                                            <td> {{ date('F Y',strtotime($viewDataPfe->periode)) }} </td>
+                                                        </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             
+                            
                         </div>
+                       
 
-                        <div class="row">
-                            <div class="col-md-3 mb-2">
-                                <input type="submit" class="btn btn-primary btn-block" value="Save Data">
-                            </div>
+                        
+                    </div>
 
-                            <div class="col-md-2">
-                                <a href="{{ route('index-pfe') }}" class="btn btn-light btn-block">Back</a>
-                            </div>
+                    <div class="row">
+                        <div class="text-end">
+                            <a href="{{ route('index-pfe') }}" class="btn btn-secondary">Back</a>
                         </div>
-                </form>
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
     </div>
 </div>
-
-{{-- script jquery untuk mengubah file gambar --}}
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#photo').change(function(e){
-            var reader = new FileReader();
-            reader.onload = function(e){
-                $('#showImageSebelum').attr('src',e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        });
-    });
-
-
-    
-
-</script>
 @endsection
