@@ -12,27 +12,16 @@
     <div class="col-md-12">
         <div class="card shadow mb-4 border-left-primary">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">@yield('title') - Ruangan Server {{ $viewPsdcData->area }}</h6>
+                <h6 class="m-0 font-weight-bold text-primary">@yield('title') - Ruangan Server {{ $viewDataPpak->area }}</h6>
             </div>
             <div class="card-body">
-
-                {{-- error handling --}}
-                @if (count($errors))
-                    @foreach ($errors->all() as $error )
-                    <p class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="mdi mdi-block-helper me-2"></i>
-                            {{ $error }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </p>
-                    @endforeach
-                @endif
 
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card mb-3">
-                            <img src="{{ asset($viewPsdcData->photo) }}" class="card-img-top img-fluid img-thumbnail mb-2">
+                            <img src="{{ asset($viewDataPpak->photo) }}" class="card-img-top img-fluid img-thumbnail mb-2">
                             <div class="card-body">
-                            <button class=" btn btn-block btn-warning">Foto Perangkat {{ $viewPsdcData->nmAlat }}</button>
+                            <button class=" btn btn-block btn-warning">Foto Perangkat {{ $viewDataPpak->merek }}</button>
                             </div>
                         </div>
                     </div>
@@ -52,44 +41,46 @@
                                                 <tbody>
                                                         <tr>
                                                             <th>PIC</th>
-                                                            <td>{{ $viewPsdcData->pic }}</td>
+                                                            <td>{{ $viewDataPpak->pic }}</td>
                                                         </tr>
 
                                                         <tr>
-                                                            <th>Nama Alat</th>
-                                                            <td>{{ $viewPsdcData->nmAlat }}</td>
+                                                            <th>Type/Merek</th>
+                                                            <td>{{ $viewDataPpak->merek }}</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <th>Suhu AC</th>
+                                                            <td>{{ $viewDataPpak->suhu }}</td>
                                                         </tr>
 
                                                         <tr>
                                                             <th>Kondisi Alat</th>
-                                                            <td>{{ $viewPsdcData->kondisi }}</td>
+                                                            <td>{{ $viewDataPpak->kondisi }}</td>
                                                         </tr>
 
                                                         <tr>
                                                             <th>Area</th>
-                                                            <td>{{ $viewPsdcData->area }}</td>
+                                                            <td>{{ $viewDataPpak->area }}</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <th>Suhu</th>
-                                                            <td>{{ $viewPsdcData->suhu }}</td>
-                                                        </tr>
+                    
 
                                        
                                                         <tr>
                                                             <th>Keterangan</th>
                                                             <td>
-                                                                <?php if($viewPsdcData['keterangan'] == 'Suhu Ruangan Normal')
+                                                                <?php if($viewDataPpak['keterangan'] == 'AC Berfungsi')
 
-                                                                { ?> <span class="badge badge-success"><?php echo $viewPsdcData['keterangan']; ?></span>
-                                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $viewPsdcData['keterangan']; ?></span>
+                                                                { ?> <span class="badge badge-success"><?php echo $viewDataPpak['keterangan']; ?></span>
+                                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $viewDataPpak['keterangan']; ?></span>
                                                                 <?php }  ?>
                                                             </td>
                                                         </tr>
 
                                                         <tr>
                                                             <th>Periode</th>
-                                                            <td> {{ date('F Y',strtotime($viewPsdcData->periode)) }} </td>
+                                                            <td> {{ date('F Y',strtotime($viewDataPpak->periode)) }} </td>
                                                         </tr>
                                                 </tbody>
                                             </table>
@@ -107,7 +98,7 @@
 
                     <div class="row">
                         <div class="text-end">
-                            <a href="{{ route('index-psdc') }}" class="btn btn-secondary">Back</a>
+                            <a href="{{ route('index-ppak') }}" class="btn btn-secondary">Back</a>
                         </div>
                     </div>
                 </div>

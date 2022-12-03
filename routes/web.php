@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Mht\MhtController;
 use App\Http\Controllers\Mht\PfeController;
 use App\Http\Controllers\Mht\PrsController;
+use App\Http\Controllers\Mht\PpakController;
 use App\Http\Controllers\Home\AdminController;
 
 /*
@@ -55,6 +56,17 @@ Route::controller(PfeController::class)->group(function () {
     Route::get('mht/edit/pfe/{id}', 'EditPfe')->name('edit-pfe');
     Route::post('mht/update/pfe', 'UpdatePfe')->name('update-pfe');
     Route::get('mht/delete/pfe/{id}', 'DeletePfe')->name('delete-pfe');
+});
+
+// group manhttan PPAK
+Route::controller(PpakController::class)->group(function () {
+    Route::get('mht/index/ppak', 'IndexPpak')->name('index-ppak');
+    Route::get('mht/add/ppak', 'AddPpak')->name('add-ppak');
+    Route::post('mht/store/ppak', 'StorePpak')->name('store-ppak');
+    Route::get('mht/view/ppak/{id}', 'ViewPpak')->name('view-ppak');
+    Route::get('mht/edit/ppak/{id}', 'EditPpak')->name('edit-ppak');
+    Route::post('mht/update/ppak', 'UpdatePpak')->name('update-ppak');
+    Route::get('mht/delete/ppak{id}', 'DeletePpak')->name('delete-ppak');
 });
 
 // admin group controller
