@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+//use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -25,6 +25,16 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // //auth hanya manhattan
+        // Get::define('isManhattan', function($user) {
+        //     return $user->location == 'Manhattan';
+        // });
+
+        //  //auth hanya ketapang
+        // Get::define('isKetapang', function($user) {
+        //     return $user->location == 'Ketapang';
+        // });
+
+
     }
 }

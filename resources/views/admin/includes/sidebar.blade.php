@@ -26,30 +26,30 @@
         Kantor
     </div>
 
-    {{-- kantor manhattan --}}
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#theManhattan"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Manhattan</span>
-        </a>
-        <div id="theManhattan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Preventif EDC Manhattan</h6>
-                <a class="collapse-item" href="{{ route('index-psdc') }}">Pengecekan Suhu</a>
-                <a class="collapse-item" href="{{ route('index-prs') }}">Ruang Server</a>
-                <a class="collapse-item" href="{{ route('index-pfe') }}">Pengecekan Apar</a>
-                <a class="collapse-item" href="{{ route('index-ppak') }}">Pengecekan AC</a>
-                <a class="collapse-item" href="cards.html">Pengecekan UPS</a>
-                <hr>
-                <a class="collapse-item" href="cards.html">Pengcekan Vicon</a>
+    @if (Auth::user()->location == 'Manhattan')
+        {{-- kantor manhattan --}}
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#theManhattan"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Manhattan</span>
+            </a>
+            <div id="theManhattan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Preventif EDC Manhattan</h6>
+                    <a class="collapse-item" href="{{ route('index-psdc') }}">Pengecekan Suhu</a>
+                    <a class="collapse-item" href="{{ route('index-prs') }}">Ruang Server</a>
+                    <a class="collapse-item" href="{{ route('index-pfe') }}">Pengecekan Apar</a>
+                    <a class="collapse-item" href="{{ route('index-ppak') }}">Pengecekan AC</a>
+                    <a class="collapse-item" href="{{ route('index-mu') }}">Pengecekan UPS</a>
+                    <hr>
+                    <a class="collapse-item" href="#">Pengcekan Vicon</a>
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
 
-    
-
-    {{-- kantor ketapang --}}
+    @else
+        {{-- kantor ketapang --}}
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ketapang"
             aria-expanded="true" aria-controls="collapseTwo">
@@ -70,6 +70,20 @@
             </div>
         </div>
     </li>
+
+    @endif
+
+ 
+   
+
+    
+    
+
+  
+
+    
+
+    
 
 
     <!-- Divider -->

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Mht\MuController;
 use App\Http\Controllers\Mht\MhtController;
 use App\Http\Controllers\Mht\PfeController;
 use App\Http\Controllers\Mht\PrsController;
@@ -67,6 +68,17 @@ Route::controller(PpakController::class)->group(function () {
     Route::get('mht/edit/ppak/{id}', 'EditPpak')->name('edit-ppak');
     Route::post('mht/update/ppak', 'UpdatePpak')->name('update-ppak');
     Route::get('mht/delete/ppak{id}', 'DeletePpak')->name('delete-ppak');
+});
+
+// group manhttan MU
+Route::controller(MuController::class)->group(function () {
+    Route::get('mht/index/mu', 'IndexMu')->name('index-mu');
+    Route::get('mht/add/mu', 'AddMu')->name('add-mu');
+    Route::post('mht/store/mu', 'StoreMu')->name('store-mu');
+    Route::get('mht/view/mu/{id}', 'ViewMu')->name('view-mu');
+    Route::get('mht/edit/mu/{id}', 'EditMu')->name('edit-mu');
+    Route::post('mht/update/mu', 'UpdateMu')->name('update-mu');
+    Route::get('mht/delete/mu/{id}', 'DeleteMu')->name('delete-mu');
 });
 
 // admin group controller

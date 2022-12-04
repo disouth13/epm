@@ -21,11 +21,9 @@ return new class extends Migration
             $table->string('pic');
             $table->string('merek');
             $table->text('keterangan');
-            $table->date('tglPengecekan');
             $table->date('periode');
             $table->string('photo');
             $table->string('kondisi');
-            $table->string('status');
 
             $table->timestamps();
         });

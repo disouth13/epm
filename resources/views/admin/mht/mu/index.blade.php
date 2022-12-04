@@ -1,6 +1,6 @@
 @extends('admin.layouts.app-admin')
 
-@section('title', 'Data Pengecekan Apar')
+@section('title', 'Data Maintenane UPS')
 
 @push('style-before')
     <link href="{{ url('https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -34,7 +34,7 @@
                         @endif  
                             
                             <div class="mb-3">
-                                <a href="{{ route('add-pfe') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="bi bi-plus-square-fill mr-2"></i> Tambah Data</a>
+                                <a href="{{ route('add-mu') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="bi bi-plus-square-fill mr-2"></i> Tambah Data</a>
                             </div>
                             
                             <div class="table-responsive">
@@ -44,7 +44,7 @@
                                             <th style="width: 3%">No.</th>
                                             <th>PIC</th>
                                             <th>Area</th>
-                                            <th>Tipe Apar</th>
+                                            <th>Merek</th>
                                             <th>Foto</th>
                                             <th>Keterangan</th>
                                             <th>Periode</th>
@@ -54,29 +54,29 @@
                                     <tbody> 
 
                                         @php($i = 1)
-
-                                        @foreach ($pfeIndexGetData as $pfeItem)
+                                        
+                                        @foreach ($muIndexGetData as $muItem)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $pfeItem->pic }}</td>
-                                            <td>{{ $pfeItem->area }}</td>
-                                            <td>{{ $pfeItem->type }}</td>
+                                            <td>{{ $muItem->pic }}</td>
+                                            <td>{{ $muItem->area }}</td>
+                                            <td>{{ $muItem->merek }}</td>
                                             <td class="text-center">
-                                                <img src="{{ asset($pfeItem->photo) }}" class="img-fluid img-thumbnail" style="width: 85px; height: auto;">
+                                                <img src="{{ asset($muItem->photo) }}" class="img-fluid img-thumbnail" style="width: 85px; height: auto;">
                                             </td>
                                             <td>
-                                                <?php if($pfeItem['keterangan'] == 'Apar Tersedia')
+                                                <?php if($muItem['keterangan'] == 'Baterai Normal')
 
-                                                { ?> <span class="badge badge-success"><?php echo $pfeItem['keterangan']; ?></span>
-                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $pfeItem['keterangan']; ?></span>
+                                                { ?> <span class="badge badge-success"><?php echo $muItem['keterangan']; ?></span>
+                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $muItem['keterangan']; ?></span>
                                                 <?php }  ?>
                                                 
                                             </td>
-                                            <td>{{ date('F Y',strtotime($pfeItem->periode)) }}</td>
+                                            <td>{{ date('F Y',strtotime($muItem->periode)) }}</td>
                                             <td class="text-center">    
-                                                <a href="{{ route('view-pfe', $pfeItem->id) }}" class="btn btn-primary btn-sm mb-1" title="Lihat Data"><i class="bi bi-binoculars-fill"></i></a>
-                                                <a href="{{ route('edit-pfe', $pfeItem->id) }}" class="btn btn-warning btn-sm mb-1" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
-                                                <a href="{{ route('delete-pfe', $pfeItem->id) }}" class="btn btn-danger btn-sm mb-1" title="Hapus Data" id="delete"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="{{ route('view-mu', $muItem->id) }}" class="btn btn-primary btn-sm mb-1" title="Lihat Data"><i class="bi bi-binoculars-fill"></i></a>
+                                                <a href="{{ route('edit-mu', $muItem->id) }}" class="btn btn-warning btn-sm mb-1" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="{{ route('delete-mu', $muItem->id) }}" class="btn btn-danger btn-sm mb-1" title="Hapus Data" id="delete"><i class="fas fa-trash-alt"></i></a>
                                                 
                                             </td>
                                         </tr>

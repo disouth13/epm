@@ -4,6 +4,10 @@
 
 @push('style-before')
     <link href="{{ url('https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css') }}">
+
+    <link rel="stylesheet" href="{{ url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css') }}">
 @endpush
 
 @push('script-before')         
@@ -40,14 +44,14 @@
 
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="nmAlat">Nama Alat</label>
+                                <label for="nmAlat" class="col-form-label">Nama Alat</label>
                                 <input type="text" class="form-control" name="nmAlat" id="nmAlat" value="{{ $ambilDataPsdc->nmAlat }}" readonly>
                                 @error('nmAlat')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 
 
-                                <label for="pic">Penanggung Jawab</label>
+                                <label for="pic" class="col-form-label">PIC</label>
                                 <input type="text" name="pic" id="pic" class="form-control"  value="{{ $ambilDataPsdc->pic }}">
                                 @error('pic')
                                     <span class="text-danger">{{ $message }}</span>
@@ -142,11 +146,12 @@
 
                         <div class="row">
                             <div class="col-md-3 mb-2">
-                                <input type="submit" class="btn btn-primary btn-block" value="Update Data">
+                                <button type="submit" class="btn btn-primary btn-block shadow-sm"><i class="fa-solid fa-arrows-rotate mr-2"></i> Ubah Data</button>
+                                
                             </div>
 
                             <div class="col-md-3">
-                                <a href="{{ route('index-psdc') }}" class="btn btn-light btn-block">Back</a>
+                                <a href="{{ route('index-psdc') }}" class="btn btn-secondary btn-block"><i class="fa fa-backward mr-2"></i> Kembali</a>
                             </div>
                         </div>
                 </form>

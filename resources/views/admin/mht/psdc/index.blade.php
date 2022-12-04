@@ -6,7 +6,6 @@
     <link href="{{ url('https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{ url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css') }}">
-   
 @endpush
 
 
@@ -34,7 +33,7 @@
                         @endif  
                             
                             <div class="mb-3">
-                                <a href="{{ route('add-psdc') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="bi bi-plus-square-fill"></i> Tambah Data</a>
+                                <a href="{{ route('add-psdc') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="bi bi-plus-square-fill mr-2"></i> Tambah Data</a>
                             </div>
                             
                             <div class="table-responsive">
@@ -74,9 +73,9 @@
                                             </td>
                                             <td>{{ date('F Y',strtotime($psdcItem->periode)) }}</td>
                                             <td class="text-center">    
-                                                <a href="{{ route('view-psdc', $psdcItem->id) }}" class="btn btn-primary btn-sm mb-1" title="View"><i class="bi bi-binoculars-fill"></i></a>
-                                                <a href="{{ route('edit-psdc', $psdcItem->id) }}" class="btn btn-warning btn-sm mb-1" title="Update"><i class="bi bi-pencil-square"></i></a>
-                                                <a href="{{ route('delete-psdc', $psdcItem->id) }}" class="btn btn-danger btn-sm mb-1" title="Delete" id="delete"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="{{ route('view-psdc', $psdcItem->id) }}" class="btn btn-primary btn-sm mb-1" title="Lihat Data"><i class="bi bi-binoculars-fill"></i></a>
+                                                <a href="{{ route('edit-psdc', $psdcItem->id) }}" class="btn btn-warning btn-sm mb-1" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="{{ route('delete-psdc', $psdcItem->id) }}" class="btn btn-danger btn-sm mb-1" title="Hapus Data" id="delete"><i class="fas fa-trash-alt"></i></a>
                                                 
                                             </td>
                                         </tr>

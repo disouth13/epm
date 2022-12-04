@@ -12,16 +12,16 @@
     <div class="col-md-12">
         <div class="card shadow mb-4 border-left-primary">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">@yield('title') - Ruangan Server {{ $viewDataPpak->area }}</h6>
+                <h6 class="m-0 font-weight-bold text-primary">@yield('title') - Ruangan Server {{ $viewDataMu->area }}</h6>
             </div>
             <div class="card-body">
 
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card mb-3">
-                            <img src="{{ asset($viewDataPpak->photo) }}" class="card-img-top img-fluid img-thumbnail mb-2">
+                            <img src="{{ asset($viewDataMu->photo) }}" class="card-img-top img-fluid img-thumbnail mb-2">
                             <div class="card-body">
-                            <button class=" btn btn-block btn-warning">Foto Perangkat {{ $viewDataPpak->merek }}</button>
+                            <button class=" btn btn-block btn-warning">Foto Perangkat {{ $viewDataMu->merek }}</button>
                             </div>
                         </div>
                     </div>
@@ -41,27 +41,22 @@
                                                 <tbody>
                                                         <tr>
                                                             <th>PIC</th>
-                                                            <td>{{ $viewDataPpak->pic }}</td>
+                                                            <td>{{ $viewDataMu->pic }}</td>
                                                         </tr>
 
                                                         <tr>
                                                             <th>Type/Merek</th>
-                                                            <td>{{ $viewDataPpak->merek }}</td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <th>Suhu AC</th>
-                                                            <td>{{ $viewDataPpak->suhu }}</td>
+                                                            <td>{{ $viewDataMu->merek }}</td>
                                                         </tr>
 
                                                         <tr>
                                                             <th>Kondisi Alat</th>
-                                                            <td>{{ $viewDataPpak->kondisi }}</td>
+                                                            <td>{{ $viewDataMu->kondisi }}</td>
                                                         </tr>
 
                                                         <tr>
                                                             <th>Area</th>
-                                                            <td>{{ $viewDataPpak->area }}</td>
+                                                            <td>{{ $viewDataMu->area }}</td>
                                                         </tr>
 
                     
@@ -70,17 +65,17 @@
                                                         <tr>
                                                             <th>Keterangan</th>
                                                             <td>
-                                                                <?php if($viewDataPpak['keterangan'] == 'AC Berfungsi')
+                                                                <?php if($viewDataMu['keterangan'] == 'Baterai Normal')
 
-                                                                { ?> <span class="badge badge-success"><?php echo $viewDataPpak['keterangan']; ?></span>
-                                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $viewDataPpak['keterangan']; ?></span>
+                                                                { ?> <span class="badge badge-success"><?php echo $viewDataMu['keterangan']; ?></span>
+                                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $viewDataMu['keterangan']; ?></span>
                                                                 <?php }  ?>
                                                             </td>
                                                         </tr>
 
                                                         <tr>
                                                             <th>Periode</th>
-                                                            <td> {{ date('F Y',strtotime($viewDataPpak->periode)) }} </td>
+                                                            <td> {{ date('F Y',strtotime($viewDataMu->periode)) }} </td>
                                                         </tr>
                                                 </tbody>
                                             </table>
@@ -91,11 +86,14 @@
                             
                             
                         </div>
+                    
+
+                        
                     </div>
 
                     <div class="row">
                         <div class="text-end">
-                            <a href="{{ route('index-ppak') }}" class="btn btn-secondary btn-block shadow-sm"><i class="fa fa-backward mr-2"></i> Kembali</a>
+                            <a href="{{ route('index-mu') }}" class="btn btn-secondary btn-block shadow-sm"><i class="fa fa-backward mr-2"></i> Kembali</a>
                         </div>
                     </div>
                 </div>

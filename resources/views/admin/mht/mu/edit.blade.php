@@ -1,6 +1,6 @@
 @extends('admin.layouts.app-admin')
 
-@section('title', 'Pembersihan Ruang Server')
+@section('title', 'Pengecekan PAC-AC')
 
 @push('style-before')
     <link href="{{ url('https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -36,18 +36,25 @@
 
 
 
-                <form action="{{ route('store-prs') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('update-mu') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+
+                    <input type="hidden" name="id" value="{{ $ambilDataMu->id }}">
+                    <input type="hidden" name="usersid" id="userid" value="{{ $ambilDataMu->users_id }}">
+
 
                         <div class="row mb-3">
                             <div class="col-md-5">
 
-                                <label for="pic">PIC</label>
-                                <input type="text" name="pic" id="pic" class="form-control">
+                                <label for="merek" class="col-form-label">Type/Merek</label>
+                                <input type="text" name="merek" id="merek" class="form-control" value="{{ $ambilDataMu->merek }}" readonly>
 
+                                <label for="pic">PIC</label>
+                                <input type="text" name="pic" id="pic" class="form-control" value="{{ $ambilDataMu->pic }}">
+                        
                                 <label for="area" class="col-form-label">Area</label>
                                 <select id="area" name="area" class="form-control form-select">
-                                    <option selected>Pilih Area</option>
+                                    <option selected>{{ $ambilDataMu->area }}</option>
                                     <option value="26A">26 A</option>
                                     <option value="26B">26 B</option>
                                     <option value="27A">27 A</option>
@@ -60,55 +67,49 @@
                                     <option value="30B">30 B</option>
                                 </select>
 
-                            
+                        
+
+                                <label for="kondisi" class="col-form-label">Kondisi UPS</label>
+                                <select id="kondisi" name="kondisi" class="form-control form-select">
+                                    <option selected>{{ $ambilDataMu->kondisi }}</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Tidak Normal">Tidak Normal/Ups Mati</option>
+                                    
+                                </select>
 
                                 <label for="keterangan" class="col-form-label">Keterangan</label>
                                 <select id="keterangan" name="keterangan" class="form-control form-select">
-                                    <option selected>Pilih Keterangan</option>
-                                    <option value="Kondisi Ruangan Rapih">Kondisi Ruangan Rapih</option>
-                                    <option value="Ada Barang Lain">Ada Barang Lain/Barang Divisi</option>
+                                    <option selected>{{ $ambilDataMu->keterangan }}</option>
+                                    <option value="Baterai Normal">Baterai Normal</option>
+                                    <option value="Baterai Bocor">Baterai Bocor</option>
                                 </select>
 
                                 <label for="periode" class="col-form-label">Periode Pengecekan</label>
-                                <input type="date" class="form-control" name="periode" id="periode">
+                                <input type="date" class="form-control" name="periode" id="periode" value="{{ $ambilDataMu->periode }}">
 
-                                <label for="photoBefore" class="col-form-label">Foto Sebelum</label>
-                                <input type="file" class="form-control" name="photoBefore" id="photoBefore">
-
-                                <label for="photoAfter" class="col-form-label">Foto Sesudah</label>
-                                <input type="file" class="form-control" name="photoAfter" id="photoAfter">
-                                
+                                <label for="photo" class="col-form-label">Foto Perangkat UPS</label>
+                                <input type="file" class="form-control" name="photo" id="photo">
                             </div>
 
                             <div class="col-md-3 mr-2 mt-3">
                             
                                 <div class="card">
-                                    <img src="{{ url('upload/no-photo.png') }}" class="card-img-top img-fluid" id="showImageSebelum">
+                                    <img src="{{ asset($ambilDataMu->photo) }}" class="card-img-top img-fluid" id="showImageSebelum" style="height: auto;">
                                     <div class="card-body">
-                                        <p class="card-text"><span class="badge badge-warning">Foto Sebelum</span></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 mt-3">
-    
-                                <div class="card">
-                                    <img src="{{ url('upload/no-photo.png') }}" class="card-img-top img-fluid" id="showImageSesudah">
-                                    <div class="card-body">
-                                        <p class="card-text"><span class="badge badge-info">Foto Sesudah</span></p>
+                                        <p class="card-text"><span class="badge badge-warning">Foto Ups - Eaton 1kva</span></p>
                                     </div>
                                 </div>
                             </div>
                             
                         </div>
 
-                        <div class="row text-end">
-                            <div class="col-md-2 mb-2">
-                                <button type="submit" class="btn btn-primary btn-block shadow-sm"><i class="fa-solid fa-floppy-disk mr-2"></i> Simpan Data</button>
+                        <div class="row">
+                            <div class="col-md-3 mb-2">
+                                <button type="submit" class="btn btn-primary btn-block shadow-sm"><i class="fa-solid fa-arrows-rotate mr-2"></i> Ubah Data</button>
                             </div>
 
-                            <div class="col-md-3">
-                                <a href="{{ route('index-psdc') }}" class="btn btn-secondary btn-block shadow-sm"><i class="fa fa-backward mr-2"></i> Kembali</a>
+                            <div class="col-md-2">
+                                <a href="{{ route('index-mu') }}" class="btn btn-secondary btn-block shadow-sm"><i class="fa fa-backward mr-2"></i> Kembali</a>
                             </div>
                         </div>
                 </form>
@@ -120,7 +121,7 @@
 {{-- script jquery untuk mengubah file gambar --}}
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#photoBefore').change(function(e){
+        $('#photo').change(function(e){
             var reader = new FileReader();
             reader.onload = function(e){
                 $('#showImageSebelum').attr('src',e.target.result);
@@ -130,15 +131,7 @@
     });
 
 
-    $(document).ready(function() {
-        $('#photoAfter').change(function(e){
-            var reader = new FileReader();
-            reader.onload = function(e){
-                $('#showImageSesudah').attr('src',e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        });
-    });
+    
 
 </script>
 @endsection

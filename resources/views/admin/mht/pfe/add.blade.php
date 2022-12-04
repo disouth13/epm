@@ -4,6 +4,10 @@
 
 @push('style-before')
     <link href="{{ url('https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css') }}">
+
+    <link rel="stylesheet" href="{{ url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css') }}">
 @endpush
 
 @push('script-before')         
@@ -36,7 +40,7 @@
                     @csrf
 
                         <div class="row mb-3">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
 
                                 <label for="pic">Penanggung Jawab</label>
                                 <input type="text" name="pic" id="pic" class="form-control">
@@ -83,7 +87,7 @@
                             <div class="col-md-3 mr-2 mt-3">
                             
                                 <div class="card">
-                                    <img src="{{ url('upload/no-photo.png') }}" class="card-img-top img-fluid" id="showImageSebelum" style="height: 450px;">
+                                    <img src="{{ url('upload/no-photo.png') }}" class="card-img-top img-fluid" id="showImageSebelum" style="auto">
                                     <div class="card-body">
                                         <p class="card-text"><span class="badge badge-warning">Foto Apar</span></p>
                                     </div>
@@ -94,11 +98,11 @@
 
                         <div class="row">
                             <div class="col-md-3 mb-2">
-                                <input type="submit" class="btn btn-primary btn-block" value="Save Data">
+                                <button type="submit" class="btn btn-primary btn-block shadow-sm"><i class="fa-solid fa-floppy-disk mr-2"></i> Simpan Data</button>
                             </div>
 
-                            <div class="col-md-2">
-                                <a href="{{ route('index-pfe') }}" class="btn btn-light btn-block">Back</a>
+                            <div class="col-md-3">
+                                <a href="{{ route('index-pfe') }}" class="btn btn-secondary btn-block shadow-sm"><i class="fa fa-backward mr-2"></i> Kembali</a>
                             </div>
                         </div>
                 </form>
