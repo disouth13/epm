@@ -27,7 +27,7 @@ class AdminController extends Controller
         
         );
 
-        return redirect('/login')->with($notification);
+        return redirect('/')->with($notification);
     }
 
     //method profile

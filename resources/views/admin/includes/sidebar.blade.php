@@ -2,10 +2,13 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon">
+            {{-- <i class="fas fa-laugh-wink"></i> --}}
+            <img src="{{ url('backend/img/iconic.svg') }}" alt="" srcset="">
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-2">
+            Preventif Maintenance
+        </div>
     </a>
 
     <!-- Divider -->
@@ -31,7 +34,7 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#theManhattan"
                 aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
+                <i class="fa-solid fa-building-circle-check"></i>
                 <span>Manhattan</span>
             </a>
             <div id="theManhattan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -98,15 +101,14 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
+            <i class="fas fa-cogs fa-sm fa-fw"></i>
+            <span>Pengaturan</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                <h6 class="collapse-header">Pengaturan</h6>
+                <a class="collapse-item" href="{{ route('admin-profile') }}"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Profile</a>
+                <a class="collapse-item" href="{{ route('change-password') }}"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Ubah Password</a>
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Other Pages:</h6>
                 <a class="collapse-item" href="404.html">404 Page</a>

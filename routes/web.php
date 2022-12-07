@@ -19,9 +19,14 @@ use App\Http\Controllers\Home\AdminController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend-page');
 });
+
 
 
 // group manhattan PSDC
