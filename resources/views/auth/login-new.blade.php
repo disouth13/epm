@@ -15,9 +15,6 @@
     {{-- font poppins --}}
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
-    {{-- icon bootstrap --}}
-    <link rel="stylesheet" href="{{ url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css') }}">
-
 </head>
 <body>
 
@@ -26,56 +23,85 @@
             <div class="inner-box">
                 <div class="forms-wrap">
                     {{-- sign in form --}}
-                    <form action="{{ route('login') }}"  method="POST" class="sign-in-form" autocomplete="off">
-                        @csrf
+                    <form action="#" class="sign-in-form" autocomplete="off">
                         <div class="logo">
                             <img src="{{ url('frontend/asset-frontend-page/img/icon-sign.svg') }}" alt="logo">
                             
                         </div>
 
                         <div class="heading">
-                            <h2>Selamat datang!</h2>
-                            <h6>Silahkan registrasi akun anda!</h6>
-                            <a href="#" class="toggle">Buat akun</a>
-                            {{-- <a href="#" class="toggle">Administrator!</a> --}}
+                            <h2>Welcome Back!</h2>
+                            <h6>Not Registered yet?</h6>
+                            <a href="#" class="toggle">Sign Up</a>
                         </div>
 
                         <div class="actual-form">
                             <div class="input-wrap">
                                 <input type="text" class="input-field" name="username" minlength="4" autocomplete="off" required>
-                                <label>Akun</label>
+                                <label>Username</label>
                             </div>
 
                             <div class="input-wrap">
                                 <input type="password" class="input-field" name="password" minlength="4" autocomplete="off" required>
-                                <label>Kata sandi</label>
+                                <label>Password</label>
                             </div>
 
-                            <input type="submit" value="Masuk" class="sign-btn">
+                            <input type="submit" value="Sign In" class="sign-btn">
                             <p class="text">
-                                Lupa password? silahkan
-                                <a href="#">Ubah password</a> anda!
+                                Forgot password or your login?
+                                <a href="#">Get Help</a> signin in
                             </p>
 
                         </div>
 
                     </form>
                     {{-- end sign in form --}}
-                    <form action="#" class="sign-up-form">
-                        <div class="alert alert-primary" role="alert">
+
+                    {{-- sign up form --}}
+                    <form action="#" class="sign-up-form" autocomplete="off">
+                        <div class="logo mb-2">
+                            <img src="{{ url('frontend/asset-frontend-page/img/icon-sign.svg') }}" alt="logo">
                             
-                            <h6 class="alert-heading"><i class="bi bi-exclamation-triangle-fill"></i><strong> Informasi kendala login!</strong></h6>
-                            <p>
-                                Silahkan konfirmasi terkait akun login anda ke PIC terakit!
-                                Terima kasih..
+                        </div>
+
+                        <div class="heading">
+                            <h2 class="mb-0">Get Started!</h2>
+                            <h6>Already have an account?</h6>
+                            <a href="#" class="toggle">Sign in</a>
+                        </div>
+
+                        <div class="actual-form mt-3">
+                            <div class="input-wrap">
+                                <input type="text" class="input-field" name="name" autocomplete="off" required>
+                                <label>Name</label>
+                            </div>
+
+                            <div class="input-wrap">
+                                <input type="text" class="input-field" name="username" minlength="4" autocomplete="off" required>
+                                <label>Username</label>
+                            </div>
+
+                            <div class="input-wrap">
+                                <input type="email" class="input-field" name="email" autocomplete="off" required>
+                                <label>Email</label>
+                            </div>
+
+                            <div class="input-wrap">
+                                <input type="password" class="input-field" name="password" minlength="4" autocomplete="off" required>
+                                <label>Password</label>
+                            </div>
+
+                            <input type="submit" value="Sign In" class="sign-btn">
+                            <p class="text">
+                                By signing up, I agree to the
+                                <a href="#">Terms of Services</a>
+                                and <a href="#">Privacy Policy</a>
                             </p>
-                            <hr>
-                            <p class="mb-0">
-                                <a href="#" class="btn btn-block btn-primary toggle" style="color: #fff;">Masuk</a>
-                            </p>
-                          </div>
+
+                        </div>
+
                     </form>
-                    
+                    {{-- end sign up form --}}
                 </div>
 
                 <div class="carousel">
@@ -89,9 +115,9 @@
                     <div class="text-slider">
                         <div class="text-wrap">
                             <div class="text-group">
-                                <h2>Silahkan melakukan login!</h2>
-                                <h2>Silahkan registrasi akun!</h2>
-                                <h2>Hubungi administrator!</h2>
+                                <h2>Improvement that is smart</h2>
+                                <h2>Service excellent</h2>
+                                <h2>The like is techonolgy</h2>
                             </div>
                         </div>
 

@@ -17,11 +17,11 @@
             <header>
                 <div class="container">
                     <div class="logo">
-                        <img src="{{ url('frontend/asset-frontend-page/img/icon-brand.svg') }}" alt="logo">
+                        <img src="{{ url('frontend/asset-frontend-page/img/icon-brand.svg') }}" alt="logo" style="width: 84px; height: auto;">
                         
-                    <span>
-                        <h2 style="color: #7B61FF;">PMS</h2>
-                    </span>
+                    {{-- <span>
+                        <h2 style="color: #4E73DF;">PM application</h2>
+                    </span> --}}
                     </div>
 
 
@@ -45,7 +45,7 @@
                 <div class="container">
                     <div class="left">
                         <div class="big-title">
-                            <h1>Preventive <span style="color: #7B61FF;">Maintenance,</span></h1>
+                            <h1>Preventive <span style="color: #4E73DF;">Maintenance,</span></h1>
                             <h1>Service Exploring now.</h1>
                         </div>
                         <p class="text">
