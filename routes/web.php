@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Mht\MuController;
 use App\Http\Controllers\Mht\MhtController;
@@ -26,6 +27,8 @@ use App\Http\Controllers\Home\AdminController;
 Route::get('/', function () {
     return view('frontend-page');
 });
+
+// register
 
 
 
@@ -101,5 +104,8 @@ Route::controller(AdminController::class)->group(function () {
 Route::get('/dashboard', function () {
     return view('admin.layouts.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
 
 require __DIR__.'/auth.php';

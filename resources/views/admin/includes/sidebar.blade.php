@@ -111,7 +111,7 @@
                 <a class="collapse-item" href="{{ route('change-password') }}"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Ubah Password</a>
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
+                <a class="collapse-item" href="{{ route('register') }}">Register</a>
                 <a class="collapse-item" href="blank.html">Blank Page</a>
             </div>
         </div>
