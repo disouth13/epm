@@ -14,7 +14,9 @@ class MhtController extends Controller
     // method IndexPsdc
     public function IndexPsdc()
     {
-        $psdcIndexGetData = Psdc::latest()->get();
+        $year = Carbon::now()->year;
+
+        $psdcIndexGetData = Psdc::latest()->whereYear('created_at', '=', $year)->get();
         return view('admin.mht.psdc.index', compact('psdcIndexGetData'));
     }
 
