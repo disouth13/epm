@@ -15,7 +15,7 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard/register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::post('dashboard/register', [RegisteredUserController::class, 'store']);
 
 });
 

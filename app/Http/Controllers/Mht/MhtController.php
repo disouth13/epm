@@ -17,8 +17,10 @@ class MhtController extends Controller
         //menampilkan data bulan dan tahun ini
         $month = carbon::now();
         $year = carbon::now();
-        $psdcIndexGetData = Psdc::latest()->whereMonth('periode', '=', $month)
-                                           ->whereYear('periode', '=', $year)->get();
+
+        $psdcIndexGetData = Psdc::join('users', 'users.id', '=', 'psdcs.users_id')->where('location', '=', 'Manhattan')->whereMonth('periode', '=', $month)
+                                           ->whereYear('periode', '=', $year)->latest('psdcs.created_at')->get();
+     
 
         return view('admin.mht.psdc.index', compact('psdcIndexGetData'));
     }

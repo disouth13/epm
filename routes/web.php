@@ -2,12 +2,18 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+// mht
 use App\Http\Controllers\Mht\MuController;
 use App\Http\Controllers\Mht\MhtController;
 use App\Http\Controllers\Mht\PfeController;
 use App\Http\Controllers\Mht\PrsController;
 use App\Http\Controllers\Mht\PpakController;
 use App\Http\Controllers\Home\AdminController;
+
+// ktp
+use App\Http\Controllers\Ktp\PsdcController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +35,19 @@ Route::get('/', function () {
 });
 
 // register
+
+
+//group Ketapang PSDC
+Route::controller(PsdcController::class)->group(function () {
+    Route::get('ktp/index/psdc', 'IndexPsdc')->name('index-psdc-ktp');
+    Route::get('ktp/add/psdc', 'AddPsdc')->name('add-psdc-ktp');
+    // Route::get('ktp/view/psdc/{id}', 'ViewPsdc')->name('view-psdc');
+    // Route::post('ktp/store/psdc', 'StorePsdc')->name('store-psdc');
+    // Route::get('ktp/edit/psdc/{id}', 'EditPsdc')->name('edit-psdc');
+    // Route::post('ktp/edit/psdc', 'UpdatePsdc')->name('update-psdc');
+    // Route::get('ktp/delete/psdc/{id}', 'DeletePsdc')->name('delete-psdc');
+
+});
 
 
 
