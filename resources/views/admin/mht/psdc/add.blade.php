@@ -46,7 +46,7 @@
                                 <label for="nmAlat">Nama Alat</label>
                                 <input type="text" class="form-control" name="nmAlat" id="nmAlat" value="Honeywell" readonly>
 
-                                <label for="pic">Penanggung Jawab</label>
+                                <label for="pic" class="col-form-label">Penanggung Jawab</label>
                                 <input type="text" name="pic" id="pic" class="form-control">
 
                                 <label for="area" class="col-form-label">Area</label>
