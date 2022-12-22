@@ -14,7 +14,13 @@ class MuController extends Controller
 {
     public function IndexMu()
     {
-        $muIndexGetData = Mu::latest()->get();
+        //menampilkan data bulan dan tahun ini
+        $month = carbon::now();
+        $year = carbon::now();
+
+        $muIndexGetData = Mu::latest()->whereMonth('periode', '=', $month)
+                                        ->whereYear('periode', '=', $year)->get();
+                                        
         return view('admin.mht.mu.index', compact('muIndexGetData'));
     } //end method
 

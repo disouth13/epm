@@ -16,7 +16,14 @@ class PpakController extends Controller
     //Method indexPpak
     public function IndexPpak()
     {
-        $ppakIndexGetData = Ppak::latest()->get();
+        //menampilkan data bulan dan tahun ini
+        $month = carbon::now();
+        $year = carbon::now();
+
+        $ppakIndexGetData = Ppak::latest()->whereMonth('periode', '=', $month)
+                                            ->whereYear('periode', '=', $year)->get();
+
+
         return view('admin.mht.ppak.index', compact('ppakIndexGetData'));
     } //end method ppak
 

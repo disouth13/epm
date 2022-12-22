@@ -15,7 +15,13 @@ class PrsController extends Controller
     // method index IndexPrs
     public function IndexPrs()
     {
-        $prsIndexGetData = Prs::latest()->get();
+
+        //menampilkan data bulan dan tahun ini
+        $month = carbon::now();
+        $year = carbon::now();
+
+        $prsIndexGetData = Prs::latest()->whereMonth('periode', '=', $month)
+                                        ->whereYear('periode', '=', $year)->get();
         return view('admin.mht.prs.index', compact('prsIndexGetData'));
     }
 

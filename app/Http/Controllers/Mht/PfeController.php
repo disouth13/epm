@@ -15,7 +15,13 @@ class PfeController extends Controller
     //method indexPfe
     public function IndexPfe()
     {
-        $pfeIndexGetData = Pfe::latest()->get();
+        //menampilkan data bulan dan tahun ini
+        $month = carbon::now();
+        $year = carbon::now();
+
+        $pfeIndexGetData = Pfe::latest()->whereMonth('periode', '=', $month)
+                                        ->whereYear('periode', '=', $year)->get();
+                                        
         return view('admin.mht.pfe.index', compact('pfeIndexGetData'));
     } //end method pfe
 
