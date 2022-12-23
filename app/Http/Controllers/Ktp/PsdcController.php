@@ -30,8 +30,15 @@ class PsdcController extends Controller
     public function AddPsdc()
     {
         return view('admin.ktp.psdc.add');
-    }
+    } //end method
 
+    //method function viwePSDC-ktp
+    public function viewPsdc($id)
+    {
+        $viewPsdcData = Psdc::findOrFail($id);
+        return view('admin.ktp.psdc.view', compact('viewPsdcData'));
+    }//end method
 
+    
     
 }

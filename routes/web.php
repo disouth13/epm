@@ -41,7 +41,7 @@ Route::get('/', function () {
 Route::controller(PsdcController::class)->group(function () {
     Route::get('ktp/index/psdc', 'IndexPsdc')->name('index-psdc-ktp');
     Route::get('ktp/add/psdc', 'AddPsdc')->name('add-psdc-ktp');
-    // Route::get('ktp/view/psdc/{id}', 'ViewPsdc')->name('view-psdc');
+    Route::get('ktp/view/psdc/{id}', 'ViewPsdc')->name('view-psdc-ktp');
     // Route::post('ktp/store/psdc', 'StorePsdc')->name('store-psdc');
     // Route::get('ktp/edit/psdc/{id}', 'EditPsdc')->name('edit-psdc');
     // Route::post('ktp/edit/psdc', 'UpdatePsdc')->name('update-psdc');
