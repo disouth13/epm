@@ -19,8 +19,8 @@ class MhtController extends Controller
         $year = carbon::now();
 
         $psdcIndexGetData = Psdc::join('users', 'users.id', '=', 'psdcs.users_id')->where('location', '=', 'Manhattan')->whereMonth('periode', '=', $month)
-                                           ->whereYear('periode', '=', $year)->latest('psdcs.created_at')->get();
-     
+                                                                                    ->whereYear('periode', '=', $year)->latest('psdcs.created_at')->get();
+
 
         return view('admin.mht.psdc.index', compact('psdcIndexGetData'));
     }
@@ -73,16 +73,16 @@ class MhtController extends Controller
 
          // save data ke database
         Psdc::insert([
-            'users_id'     => Auth::user()->id,
-            'area'        => $request->area,
-            'pic'       => $request->pic, 
+            'users_id'      => Auth::user()->id,
+            'area'          => $request->area,
+            'pic'           => $request->pic, 
             'nmAlat'        => $request->nmAlat,
-            'suhu'        => $request->suhu,
-            'kondisi'        => $request->kondisi,
-            'keterangan'       => $request->keterangan,
-            'photo'       => $saveUrl,
-            'periode'   => $request->periode,
-            'created_at'            => Carbon::now(),
+            'suhu'          => $request->suhu,
+            'kondisi'       => $request->kondisi,
+            'keterangan'    => $request->keterangan,
+            'photo'         => $saveUrl,
+            'periode'       => $request->periode,
+            'created_at'    => Carbon::now(),
 
         ]);
 

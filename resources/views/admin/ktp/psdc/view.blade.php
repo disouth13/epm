@@ -107,7 +107,7 @@
 
                     <div class="row">
                         <div class="text-end">
-                            <a href="{{ route('index-psdc') }}" class="btn btn-secondary btn-block shadow-sm"><i class="fa fa-backward mr-2"></i> Kembali</a>
+                            <a href="{{ route('index-psdc-ktp') }}" class="btn btn-secondary btn-block shadow-sm"><i class="fa fa-backward mr-2"></i> Kembali</a>
                         </div>
                     </div>
                 </div>

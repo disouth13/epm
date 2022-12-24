@@ -36,7 +36,7 @@
 
 
 
-                <form action="{{ route('update-psdc') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('update-psdc-ktp') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                         <input type="hidden" name="id" value="{{ $ambilDataPsdc->id }}">
@@ -151,7 +151,7 @@
                             </div>
 
                             <div class="col-md-3">
-                                <a href="{{ route('index-psdc') }}" class="btn btn-secondary btn-block"><i class="fa fa-backward mr-2"></i> Kembali</a>
+                                <a href="{{ route('index-psdc-ktp') }}" class="btn btn-secondary btn-block"><i class="fa fa-backward mr-2"></i> Kembali</a>
                             </div>
                         </div>
                 </form>

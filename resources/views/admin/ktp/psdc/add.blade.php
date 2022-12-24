@@ -38,7 +38,7 @@
 
 
 
-                <form action="{{ route('store-psdc') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('store-psdc-ktp') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                         <div class="row mb-3">
