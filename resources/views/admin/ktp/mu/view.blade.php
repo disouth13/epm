@@ -49,17 +49,23 @@
                                                             <td>{{ $viewDataMu->merek }}</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <th>Kondisi Alat</th>
-                                                            <td>{{ $viewDataMu->kondisi }}</td>
-                                                        </tr>
+                                                        
 
                                                         <tr>
                                                             <th>Area</th>
                                                             <td>{{ $viewDataMu->area }}</td>
                                                         </tr>
 
-                    
+                                                        <tr>
+                                                            <th>Kondisi Alat</th>
+                                                            <td>
+                                                                <?php if($viewDataMu['kondisi'] == 'Normal')
+
+                                                                { ?> <span class="badge badge-success"><?php echo $viewDataMu['kondisi']; ?></span>
+                                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $viewDataMu['kondisi']; ?></span>
+                                                                <?php }  ?>
+                                                            </td>
+                                                        </tr>
 
                                        
                                                         <tr>

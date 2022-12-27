@@ -125,13 +125,13 @@ class PfeKtpController extends Controller
                 'pic'           => 'required',
                 'type'          => 'required',
                 'keterangan'    => 'required',
-                'photo'         => 'required',
+                
                 'kondisi'       => 'required',
                 'periode'       => 'required',
             ],
 
             [
-                'photo.required'                => 'Upload ulang foto !',
+                
                 'area.required'                 => 'Pilih data area!',
                 'pic.required'                  => 'Data PIC belum diinputkan!',
                 'type.required'                 => 'Pilih data type!',
@@ -159,10 +159,8 @@ class PfeKtpController extends Controller
 
             $saveUrl = 'upload/ktp/pfe/'.$name_generate;
 
-        };
-
-        // update data
-        Pfe::findOrFail($updateDataPfeID)->update([
+            // update data
+            Pfe::findOrFail($updateDataPfeID)->update([
 
             // namadariDB      nmdariForm
             'users_id'      => Auth::user()->id,
@@ -176,6 +174,30 @@ class PfeKtpController extends Controller
             'created_at'     => Carbon::now(),
         ]);
 
+            // notif message
+            $notification = array(
+                'message'       =>  'Data berhasil di ubah',
+                'alert-type'    =>  'success'
+            );
+
+            return redirect()->route('index-pfe-ktp')->with($notification);
+
+        } else {
+
+            // update data
+        Pfe::findOrFail($updateDataPfeID)->update([
+
+            // namadariDB      nmdariForm
+            'users_id'      => Auth::user()->id,
+            'area'          => $request->area,
+            'pic'           => $request->pic,
+            'type'          => $request->type,
+            'keterangan'    => $request->keterangan,
+            'kondisi'       => $request->kondisi,
+            'periode'       => $request->periode,
+            'created_at'     => Carbon::now(),
+        ]);
+
         // notif message
         $notification = array(
             'message'       =>  'Data berhasil di ubah',
@@ -183,6 +205,10 @@ class PfeKtpController extends Controller
         );
 
         return redirect()->route('index-pfe-ktp')->with($notification);
+
+        };
+
+        
 
     } //end method update pfe
 

@@ -44,9 +44,9 @@
                                             <th style="width: 3%">No.</th>
                                             <th>PIC</th>
                                             <th>Area</th>
-                                            <th>Merek</th>
                                             <th>Suhu Ruangan</th>
                                             <th>Foto</th>
+                                            <th>Kondisi</th>
                                             <th>Keterangan</th>
                                             <th>Periode</th>
                                             <th class="text-center">Aksi</th>
@@ -61,11 +61,20 @@
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $ppakItem->pic }}</td>
                                             <td>{{ $ppakItem->area }}</td>
-                                            <td>{{ $ppakItem->merek }}</td>
+                                            
                                             <td>{{ $ppakItem->suhu }}</td>
                                             <td class="text-center">
                                                 <img src="{{ asset($ppakItem->photo) }}" class="img-fluid img-thumbnail" style="width: 85px; height: auto;">
                                             </td>
+
+                                            <td>
+                                                <?php if($ppakItem['kondisi'] == 'AC Dingin')
+
+                                                { ?> <span class="badge badge-success"><?php echo $ppakItem['kondisi']; ?></span>
+                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $ppakItem['kondisi']; ?></span>
+                                                <?php }  ?>
+                                            </td>
+                                
                                             <td>
                                                 <?php if($ppakItem['keterangan'] == 'AC Berfungsi')
 

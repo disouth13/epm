@@ -42,7 +42,7 @@
                                         <tr>
                                             <th style="width: 3%">No.</th>
                                             <th>PIC</th>
-                                            <th>Nama Alat</th>
+                                            <th>Photo</th>
                                             <th>Area</th>
                                             <th>Suhu</th>
                                             <th>Kondisi Alat</th>
@@ -59,10 +59,18 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $psdcItem->pic }}</td>
-                                            <td>{{ $psdcItem->nmAlat }}</td>
+                                            <td>
+                                                <img src="{{ asset($psdcItem->photo) }}" class="img-fluid img-thumbnail" style="width: 85px; height: auto;">
+                                            </td>
                                             <td>{{ $psdcItem->area }}</td>
                                             <td>{{ $psdcItem->suhu }}</td>
-                                            <td>{{ $psdcItem->kondisi }}</td>
+                                            <td>
+                                                <?php if($psdcItem['kondisi'] == 'Berfungsi')
+
+                                                { ?> <span class="badge badge-success"><?php echo $psdcItem['kondisi']; ?></span>
+                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $psdcItem['kondisi']; ?></span>
+                                                <?php }  ?>
+                                            </td>
                                             <td>
                                                 <?php if($psdcItem['keterangan'] == 'Suhu Ruangan Normal')
 

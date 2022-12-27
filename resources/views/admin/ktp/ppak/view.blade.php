@@ -44,6 +44,13 @@
                                                             <td>{{ $viewDataPpak->pic }}</td>
                                                         </tr>
 
+                                                        
+                                                        <tr>
+                                                            <th>Area</th>
+                                                            <td>{{ $viewDataPpak->area }}</td>
+                                                        </tr>
+
+
                                                         <tr>
                                                             <th>Type/Merek</th>
                                                             <td>{{ $viewDataPpak->merek }}</td>
@@ -56,12 +63,16 @@
 
                                                         <tr>
                                                             <th>Kondisi Alat</th>
-                                                            <td>{{ $viewDataPpak->kondisi }}</td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <th>Area</th>
-                                                            <td>{{ $viewDataPpak->area }}</td>
+                                                            
+                                                                
+                                                                <td>
+                                                                    <?php if($viewDataPpak['kondisi'] == 'AC Dingin')
+    
+                                                                    { ?> <span class="badge badge-success"><?php echo $viewDataPpak['kondisi']; ?></span>
+                                                                    <?php } else { ?> <span class="badge badge-danger"><?php echo $viewDataPpak['keterangan']; ?></span>
+                                                                    <?php }  ?>
+                                                                </td>
+                                        
                                                         </tr>
 
                     

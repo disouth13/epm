@@ -119,7 +119,7 @@ class PpakKtpController extends Controller
         // membuat validasi pada form
         $request->validate(
             [
-                'photo'             => 'required',
+                
                 'area'              => 'required',
                 'pic'               => 'required',
                 'merek'             => 'required',
@@ -130,7 +130,7 @@ class PpakKtpController extends Controller
             ],
 
             [
-                'photo.required'                => 'Silahkan Upload Foto!',
+                
                 'area.required'                 => 'Silahkan Pilih Area!',
                 'pic.required'                  => 'Anda belum input PIC!',
                 'merek.required'                => 'Silahkan Pilih Merek!',
@@ -157,10 +157,7 @@ class PpakKtpController extends Controller
 
             $saveUrl = 'upload/ktp/ppak/'.$name_generate;
 
-        };
-
-
-         // update data
+             // update data
         Ppak::findOrFail($updateDataPpakID)->update([
 
             // namadariDB      nmdariForm
@@ -183,6 +180,38 @@ class PpakKtpController extends Controller
         );
 
         return redirect()->route('index-ppak-ktp')->with($notification);
+
+        } else {
+
+             // update data
+        Ppak::findOrFail($updateDataPpakID)->update([
+
+            // namadariDB      nmdariForm
+            'users_id'      => Auth::user()->id,
+            'area'          => $request->area,
+            'pic'           => $request->pic,
+            'merek'         => $request->merek,
+            'suhu'          => $request->suhu,
+            'keterangan'    => $request->keterangan,
+            'kondisi'       => $request->kondisi,
+            'periode'       => $request->periode,
+            
+            'created_at'     => Carbon::now(),
+        ]);
+
+        // notif message
+        $notification = array(
+            'message'       =>  'Data berhasil disimpan',
+            'alert-type'    =>  'success'
+        );
+
+        return redirect()->route('index-ppak-ktp')->with($notification);
+
+
+        };
+
+
+        
     
     } //end method update
 

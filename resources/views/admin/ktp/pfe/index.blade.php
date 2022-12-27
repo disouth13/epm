@@ -60,9 +60,16 @@
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $pfeItem->pic }}</td>
                                             <td>{{ $pfeItem->area }}</td>
-                                            <td>{{ $pfeItem->type }}</td>
                                             <td class="text-center">
                                                 <img src="{{ asset($pfeItem->photo) }}" class="img-fluid img-thumbnail" style="width: 85px; height: auto;">
+                                            </td>
+                                            <td>
+                                                <?php if($pfeItem['kondisi'] == 'Kondisi Apar Baik')
+
+                                                { ?> <span class="badge badge-success"><?php echo $pfeItem['kondisi']; ?></span>
+                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $pfeItem['kondisi']; ?></span>
+                                                <?php }  ?>
+                                                
                                             </td>
                                             <td>
                                                 <?php if($pfeItem['keterangan'] == 'Apar Tersedia')

@@ -49,19 +49,26 @@
                                                             <td>{{ $viewDataPfe->type }}</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <th>Kondisi Alat</th>
-                                                            <td>{{ $viewDataPfe->kondisi }}</td>
-                                                        </tr>
+                                                        
 
                                                         <tr>
                                                             <th>Area</th>
                                                             <td>{{ $viewDataPfe->area }}</td>
                                                         </tr>
 
-                    
+                                                        <tr>
+                                                            <th>Kondisi Alat</th>
+                                                            <td>
+                                                                <?php if($viewDataPfe['kondisi'] == 'Kondisi Apar Baik')
 
-                                       
+                                                                { ?> <span class="badge badge-success"><?php echo $viewDataPfe['kondisi']; ?></span>
+                                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $viewDataPfe['kondisi']; ?></span>
+                                                                <?php }  ?>
+                                                                
+                                                            </td>
+                                                        </tr>
+
+                                
                                                         <tr>
                                                             <th>Keterangan</th>
                                                             <td>
