@@ -54,17 +54,23 @@
                                                             <td>{{ $viewDataPpak->suhu }}</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <th>Kondisi Alat</th>
-                                                            <td>{{ $viewDataPpak->kondisi }}</td>
-                                                        </tr>
-
+                                                        
                                                         <tr>
                                                             <th>Area</th>
                                                             <td>{{ $viewDataPpak->area }}</td>
                                                         </tr>
+                                                        
+                                                        
+                                                        <tr>
+                                                            <th>Kondisi Alat</th>
+                                                            <td>
+                                                                <?php if($viewDataPpak['kondisi'] == 'AC Dingin')
 
-                    
+                                                                { ?> <span class="badge badge-success"><?php echo $viewDataPpak['kondisi']; ?></span>
+                                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $viewDataPpak['kondisi']; ?></span>
+                                                                <?php }  ?>
+                                                            </td>
+                                                        </tr>
 
                                        
                                                         <tr>

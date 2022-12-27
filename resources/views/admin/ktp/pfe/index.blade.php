@@ -44,8 +44,8 @@
                                             <th style="width: 3%">No.</th>
                                             <th>PIC</th>
                                             <th>Area</th>
-                                            <th>Tipe Apar</th>
                                             <th>Foto</th>
+                                            <th>Kondisi</th>
                                             <th>Keterangan</th>
                                             <th>Periode</th>
                                             <th class="text-center">Aksi</th>

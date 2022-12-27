@@ -60,10 +60,7 @@
                                                             <td>{{ $viewPsdcData->nmAlat }}</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <th>Kondisi Alat</th>
-                                                            <td>{{ $viewPsdcData->kondisi }}</td>
-                                                        </tr>
+                                                        
 
                                                         <tr>
                                                             <th>Area</th>
@@ -75,6 +72,16 @@
                                                             <td>{{ $viewPsdcData->suhu }}</td>
                                                         </tr>
 
+                                                        <tr>
+                                                            <th>Kondisi Alat</th>
+                                                            <td>
+                                                                <?php if($viewPsdcData['kondisi'] == 'Berfungsi')
+
+                                                                { ?> <span class="badge badge-success"><?php echo $viewPsdcData['kondisi']; ?></span>
+                                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $viewPsdcData['kondisi']; ?></span>
+                                                                <?php }  ?>
+                                                            </td>
+                                                        </tr>
                                        
                                                         <tr>
                                                             <th>Keterangan</th>

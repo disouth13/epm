@@ -124,13 +124,12 @@ class PfeController extends Controller
                 'pic'           => 'required',
                 'type'          => 'required',
                 'keterangan'    => 'required',
-                'photo'         => 'required',
                 'kondisi'       => 'required',
                 'periode'       => 'required',
             ],
 
             [
-                'photo.required'                => 'Upload ulang foto !',
+                
                 'area.required'                 => 'Pilih data area!',
                 'pic.required'                  => 'Data PIC belum diinputkan!',
                 'type.required'                 => 'Pilih data type!',
@@ -158,9 +157,7 @@ class PfeController extends Controller
 
             $saveUrl = 'upload/mht/pfe/'.$name_generate;
 
-        };
-
-        // update data
+             // update data
         Pfe::findOrFail($updateDataPfeID)->update([
 
             // namadariDB      nmdariForm
@@ -182,6 +179,33 @@ class PfeController extends Controller
         );
 
         return redirect()->route('index-pfe')->with($notification);
+
+        } else {
+
+             // update data
+        Pfe::findOrFail($updateDataPfeID)->update([
+
+            // namadariDB      nmdariForm
+            'users_id'      => Auth::user()->id,
+            'area'          => $request->area,
+            'pic'           => $request->pic,
+            'type'          => $request->type,
+            'keterangan'    => $request->keterangan,
+            'kondisi'       => $request->kondisi,
+            'periode'       => $request->periode,
+            'created_at'     => Carbon::now(),
+        ]);
+
+        // notif message
+        $notification = array(
+            'message'       =>  'Data berhasil di ubah',
+            'alert-type'    =>  'success'
+        );
+
+        return redirect()->route('index-pfe')->with($notification);
+        };
+
+    
 
         
 

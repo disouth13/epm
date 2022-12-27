@@ -44,8 +44,8 @@
                                             <th style="width: 3%">No.</th>
                                             <th>PIC</th>
                                             <th>Area</th>
-                                            <th>Merek</th>
                                             <th>Foto</th>
+                                            <th>Merek</th>
                                             <th>Keterangan</th>
                                             <th>Periode</th>
                                             <th class="text-center">Aksi</th>
@@ -60,9 +60,15 @@
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $muItem->pic }}</td>
                                             <td>{{ $muItem->area }}</td>
-                                            <td>{{ $muItem->merek }}</td>
                                             <td class="text-center">
                                                 <img src="{{ asset($muItem->photo) }}" class="img-fluid img-thumbnail" style="width: 85px; height: auto;">
+                                            </td>
+                                            <td>
+                                                <?php if($muItem['kondisi'] == 'Normal')
+
+                                                { ?> <span class="badge badge-success"><?php echo $muItem['kondisi']; ?></span>
+                                                <?php } else { ?> <span class="badge badge-danger"><?php echo $muItem['kondisi']; ?></span>
+                                                <?php }  ?>
                                             </td>
                                             <td>
                                                 <?php if($muItem['keterangan'] == 'Baterai Normal')

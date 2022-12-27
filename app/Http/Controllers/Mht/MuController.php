@@ -109,7 +109,7 @@ class MuController extends Controller
         // membuat validasi pada form
         $request->validate(
             [
-                'photo'             => 'required',
+                
                 'area'              => 'required',
                 'pic'               => 'required',
                 'merek'             => 'required',
@@ -119,7 +119,7 @@ class MuController extends Controller
             ],
 
             [
-                'photo.required'                => 'Silahkan Upload Foto!',
+                
                 'area.required'                 => 'Silahkan Pilih Area!',
                 'pic.required'                  => 'Anda belum input PIC!',
                 'merek.required'                => 'Silahkan Pilih Merek!',
@@ -145,10 +145,7 @@ class MuController extends Controller
 
             $saveUrl = 'upload/mht/mu/'.$name_generate;
 
-        };
-
-
-         // update data
+             // update data
         Mu::findOrFail($updateDataMuID)->update([
 
             // namadariDB      nmdariForm
@@ -170,6 +167,36 @@ class MuController extends Controller
         );
 
         return redirect()->route('index-mu')->with($notification);
+
+        } else {
+
+             // update data
+        Mu::findOrFail($updateDataMuID)->update([
+
+            // namadariDB      nmdariForm
+            'users_id'      => Auth::user()->id,
+            'area'          => $request->area,
+            'pic'           => $request->pic,
+            'merek'         => $request->merek,
+            'keterangan'    => $request->keterangan,
+            'kondisi'       => $request->kondisi,
+            'periode'       => $request->periode,
+            
+            'created_at'     => Carbon::now(),
+        ]);
+
+        // notif message
+        $notification = array(
+            'message'       =>  'Data berhasil disimpan',
+            'alert-type'    =>  'success'
+        );
+
+        return redirect()->route('index-mu')->with($notification);
+
+        };
+
+
+        
     
     } //end method
 
