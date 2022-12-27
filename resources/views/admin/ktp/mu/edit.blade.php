@@ -36,7 +36,7 @@
 
 
 
-                <form action="{{ route('update-mu') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('update-mu-ktp') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <input type="hidden" name="id" value="{{ $ambilDataMu->id }}">
@@ -49,22 +49,24 @@
                                 <label for="merek" class="col-form-label">Type/Merek</label>
                                 <input type="text" name="merek" id="merek" class="form-control" value="{{ $ambilDataMu->merek }}" readonly>
 
-                                <label for="pic">PIC</label>
+                                <label for="pic" class="col-form-label">Penanggung Jawab</label>
                                 <input type="text" name="pic" id="pic" class="form-control" value="{{ $ambilDataMu->pic }}">
-                        
+
                                 <label for="area" class="col-form-label">Area</label>
                                 <select id="area" name="area" class="form-control form-select">
                                     <option selected>{{ $ambilDataMu->area }}</option>
-                                    <option value="26A">26 A</option>
-                                    <option value="26B">26 B</option>
-                                    <option value="27A">27 A</option>
-                                    <option value="27B">27 B</option>
-                                    <option value="28A">28 A</option>
-                                    <option value="28B">28 B</option>
-                                    <option value="29A">29 A</option>
-                                    <option value="29B">29 B</option>
-                                    <option value="30A">30 A</option>
-                                    <option value="30B">30 B</option>
+                                    <option value="LT Dasar Graha PGAS">LT Dasar Graha PGAS</option>
+                                    <option value="LT 2 Graha PGAS">LT 2 Graha PGAS</option>
+                                    <option value="LT 3 Graha PGAS">LT 3 Graha PGAS</option>
+                                    <option value="LT 4 Graha PGAS">LT 4 Graha PGAS</option>
+                                    <option value="LT 5 Graha PGAS">LT 5 Graha PGAS</option>
+                                    <option value="LT 6 Graha PGAS">LT 6 Graha PGAS</option>
+                                    <option value="LT 7 Graha PGAS">LT 7 Graha PGAS</option>
+                                    <option value="LT 8 Graha PGAS">LT 8 Graha PGAS</option>
+                                    <option value="LT 9 Graha PGAS">LT 9 Graha PGAS</option>
+                                    <option value="LT 10 Graha PGAS">LT 10 Graha PGAS</option>
+                                    <option value="LT 2 Gedung A">LT 2 Gedung A</option>
+                                    <option value="LT 4 Gedung A">LT 4 Gedung A</option>
                                 </select>
 
                         
@@ -109,7 +111,7 @@
                             </div>
 
                             <div class="col-md-2">
-                                <a href="{{ route('index-mu') }}" class="btn btn-secondary btn-block shadow-sm"><i class="fa fa-backward mr-2"></i> Kembali</a>
+                                <a href="{{ route('index-mu-ktp') }}" class="btn btn-secondary btn-block shadow-sm"><i class="fa fa-backward mr-2"></i> Kembali</a>
                             </div>
                         </div>
                 </form>

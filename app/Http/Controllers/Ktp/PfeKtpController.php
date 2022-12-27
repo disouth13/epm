@@ -1,36 +1,37 @@
 <?php
 
-namespace App\Http\Controllers\Mht;
+namespace App\Http\Controllers\Ktp;
 
 use Image;
 
 use App\Models\Pfe;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class PfeController extends Controller
+class PfeKtpController extends Controller
 {
-    //method indexPfe
+    //method indexPfe Ktp
     public function IndexPfe()
     {
-         //menampilkan data bulan dan tahun
+          //menampilkan data bulan dan tahun
         $month = carbon::now();
         $year = carbon::now();
-        $pfeIndexGetData = Pfe::join('users', 'users.id', '=', 'pfe.users_id')->Select('*', 'pfe.id AS pfe_id')->where('location', '=', 'Manhattan')->whereMonth('periode', '=', $month)
-                                        ->whereYear('periode', '=', $year)->latest('pfe.created_at')->get();
-                                        
-        return view('admin.mht.pfe.index', compact('pfeIndexGetData'));
-    } //end method pfe
+        $pfeIndexGetData = Pfe::Join('users', 'users.id', '=', 'pfe.users_id')->Select('*', 'pfe.id AS pfe_id')->where('location', '=', 'Ketapang')->whereMonth('periode', '=', $month)->whereYear('periode', '=', $year)->latest('pfe.created_at')->get();
 
-    // method addPfe
+        // dd($pfeIndexGetData);
+                                        
+        return view('admin.ktp.pfe.index', compact('pfeIndexGetData'));
+    } //end method
+
+    // method addPfe Ktp
     public function AddPfe()
     {
-        return view('admin.mht.pfe.add');
-    } // end method addpfe
+        return view('admin.ktp.pfe.add');
+    } //end method 
 
-
+    // method storePFe Ktp
     public function StorePfe(Request $request)
     {
         //Membuat validasi form
@@ -65,9 +66,9 @@ class PfeController extends Controller
             $name_generate = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
             // image intervantion
-            Image::make($image)->resize(474, 484)->save('upload/mht/pfe/'.$name_generate);
+            Image::make($image)->resize(474, 484)->save('upload/ktp/pfe/'.$name_generate);
 
-            $saveUrl = 'upload/mht/pfe/'.$name_generate;
+            $saveUrl = 'upload/ktp/pfe/'.$name_generate;
 
         };
 
@@ -91,34 +92,34 @@ class PfeController extends Controller
             'alert-type'    =>  'success'
         );
 
-        return redirect()->route('index-pfe')->with($notification);
-
-
+        return redirect()->route('index-pfe-ktp')->with($notification);
 
     } //end method storePfe
 
-
+    // method viewPFe Ktp
     public function ViewPfe($id)
     {
         $viewDataPfe = Pfe::findOrFail($id);
-        return view('admin.mht.pfe.view', compact('viewDataPfe'));
+        return view('admin.ktp.pfe.view', compact('viewDataPfe'));
+    } //end method pfe ktp
 
-    } //end method
 
+    //method editPfe Ktp
     public function EditPfe($id)
     {
         $ambilDataPfe = Pfe::findOrFail($id);
-        
-        return view('admin.mht.pfe.edit', compact('ambilDataPfe'));
+        return view('admin.ktp.pfe.edit', compact('ambilDataPfe'));
     } //end method
 
+
+    //method updatePfeKtp
     public function UpdatePfe(Request $request)
     {
         $updateDataPfeID = $request->id;
 
 
          //Membuat validasi form
-         $request->validate(
+        $request->validate(
             [
                 'area'          => 'required',
                 'pic'           => 'required',
@@ -154,9 +155,9 @@ class PfeController extends Controller
             $name_generate = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
             // image intervantion
-            Image::make($image)->resize(474, 484)->save('upload/mht/pfe/'.$name_generate);
+            Image::make($image)->resize(474, 484)->save('upload/ktp/pfe/'.$name_generate);
 
-            $saveUrl = 'upload/mht/pfe/'.$name_generate;
+            $saveUrl = 'upload/ktp/pfe/'.$name_generate;
 
         };
 
@@ -181,14 +182,11 @@ class PfeController extends Controller
             'alert-type'    =>  'success'
         );
 
-        return redirect()->route('index-pfe')->with($notification);
-
-        
-
+        return redirect()->route('index-pfe-ktp')->with($notification);
 
     } //end method update pfe
 
-
+    // Method DeletPfe kTp
     public function DeletePfe($id)
     {
         $deletePfeID = Pfe::findOrFail($id);
@@ -205,6 +203,9 @@ class PfeController extends Controller
         return redirect()->back()->with($notification);
 
     }
+
+
+
 
 
 }

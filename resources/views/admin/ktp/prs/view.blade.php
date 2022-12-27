@@ -89,7 +89,7 @@
 
                 <div class="row mt-3">
                     <div class="text-center">
-                        <a href="{{ route('index-prs') }}" class="btn btn-secondary btn-block shadow-sm"><i class="fa fa-backward mr-2"></i> Kembali</a>
+                        <a href="{{ route('index-prs-ktp') }}" class="btn btn-secondary btn-block shadow-sm"><i class="fa fa-backward mr-2"></i> Kembali</a>
                     </div>
                 </div>
 

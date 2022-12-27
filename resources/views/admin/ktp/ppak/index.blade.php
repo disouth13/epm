@@ -34,7 +34,7 @@
                         @endif  
                             
                             <div class="mb-3">
-                                <a href="{{ route('add-ppak') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="bi bi-plus-square-fill mr-2"></i> Tambah Data</a>
+                                <a href="{{ route('add-ppak-ktp') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="bi bi-plus-square-fill mr-2"></i> Tambah Data</a>
                             </div>
                             
                             <div class="table-responsive">
@@ -76,9 +76,9 @@
                                             </td>
                                             <td>{{ date('F Y',strtotime($ppakItem->periode)) }}</td>
                                             <td class="text-center">    
-                                                <a href="{{ route('view-ppak', $ppakItem->id) }}" class="btn btn-primary btn-sm mb-1" title="Lihat Data"><i class="bi bi-binoculars-fill"></i></a>
-                                                <a href="{{ route('edit-ppak', $ppakItem->id) }}" class="btn btn-warning btn-sm mb-1" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
-                                                <a href="{{ route('delete-ppak', $ppakItem->id) }}" class="btn btn-danger btn-sm mb-1" title="Hapus Data" id="delete"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="{{ route('view-ppak-ktp', $ppakItem->ppak_id) }}" class="btn btn-primary btn-sm mb-1" title="Lihat Data"><i class="bi bi-binoculars-fill"></i></a>
+                                                <a href="{{ route('edit-ppak-ktp', $ppakItem->ppak_id) }}" class="btn btn-warning btn-sm mb-1" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="{{ route('delete-ppak-ktp', $ppakItem->ppak_id) }}" class="btn btn-danger btn-sm mb-1" title="Hapus Data" id="delete"><i class="fas fa-trash-alt"></i></a>
                                                 
                                             </td>
                                         </tr>

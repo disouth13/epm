@@ -9,10 +9,18 @@ use App\Http\Controllers\Mht\MhtController;
 use App\Http\Controllers\Mht\PfeController;
 use App\Http\Controllers\Mht\PrsController;
 use App\Http\Controllers\Mht\PpakController;
-use App\Http\Controllers\Home\AdminController;
 
 // ktp
+use App\Http\Controllers\Ktp\MuKtpController;
 use App\Http\Controllers\Ktp\PsdcController;
+use App\Http\Controllers\Ktp\PpakKtpController;
+use App\Http\Controllers\Ktp\PrsKtpController;
+use App\Http\Controllers\Ktp\PfeKtpController;
+
+
+use App\Http\Controllers\Home\AdminController;
+
+
 
 
 /*
@@ -47,6 +55,53 @@ Route::controller(PsdcController::class)->group(function () {
     Route::post('ktp/edit/psdc', 'UpdatePsdc')->name('update-psdc-ktp');
     Route::get('ktp/delete/psdc/{id}', 'DeletePsdc')->name('delete-psdc-ktp');
 
+});
+
+// group Ketapang PRS
+Route::controller(PrsKtpController::class)->group(function () {
+    Route::get('ktp/index/prs', 'IndexPrs')->name('index-prs-ktp');
+    Route::get('ktp/add/prs', 'AddPrs')->name('add-prs-ktp');
+    Route::post('ktp/store/prs', 'StorePrs')->name('store-prs-ktp');
+    Route::get('ktp/view/prs/{id}', 'ViewPrs')->name('view-prs-ktp');
+    Route::get('ktp/edit/prs/{id}', 'EditPrs')->name('edit-prs-ktp');
+    Route::post('ktp/update/prs', 'UpdatePrs')->name('update-prs-ktp');
+    Route::get('ktp/delete/prs/{id}', 'DeletePrs')->name('delete-prs-ktp');
+
+});
+
+// group ktp PFE
+Route::controller(PfeKtpController::class)->group(function () {
+    Route::get('ktp/index/pfe', 'IndexPfe')->name('index-pfe-ktp');
+    Route::get('ktp/add/pfe', 'AddPfe')->name('add-pfe-ktp');
+    Route::post('ktp/store/pfe', 'StorePfe')->name('store-pfe-ktp');
+    Route::get('ktp/view/pfe/{id}', 'ViewPfe')->name('view-pfe-ktp');
+    Route::get('ktp/edit/pfe/{id}', 'EditPfe')->name('edit-pfe-ktp');
+    Route::post('ktp/update/pfe', 'UpdatePfe')->name('update-pfe-ktp');
+    Route::get('ktp/delete/pfe/{id}', 'DeletePfe')->name('delete-pfe-ktp');
+});
+
+
+// group Ktp PPAK
+Route::controller(PpakKtpController::class)->group(function () {
+    Route::get('ktp/index/ppak', 'IndexPpak')->name('index-ppak-ktp');
+    Route::get('ktp/add/ppak', 'AddPpak')->name('add-ppak-ktp');
+    Route::post('ktp/store/ppak', 'StorePpak')->name('store-ppak-ktp');
+    Route::get('ktp/view/ppak/{id}', 'ViewPpak')->name('view-ppak-ktp');
+    Route::get('ktp/edit/ppak/{id}', 'EditPpak')->name('edit-ppak-ktp');
+    Route::post('ktp/update/ppak', 'UpdatePpak')->name('update-ppak-ktp');
+    Route::get('ktp/delete/ppak{id}', 'DeletePpak')->name('delete-ppak-ktp');
+});
+
+
+// group Ktp MU
+Route::controller(MuKtpController::class)->group(function () {
+    Route::get('ktp/index/mu', 'IndexMu')->name('index-mu-ktp');
+    Route::get('ktp/add/mu', 'AddMu')->name('add-mu-ktp');
+    Route::post('ktp/store/mu', 'StoreMu')->name('store-mu-ktp');
+    Route::get('ktp/view/mu/{id}', 'ViewMu')->name('view-mu-ktp');
+    Route::get('ktp/edit/mu/{id}', 'EditMu')->name('edit-mu-ktp');
+    Route::post('ktp/update/mu', 'UpdateMu')->name('update-mu-ktp');
+    Route::get('ktp/delete/mu/{id}', 'DeleteMu')->name('delete-mu-ktp');
 });
 
 

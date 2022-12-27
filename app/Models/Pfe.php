@@ -13,4 +13,6 @@ class Pfe extends Model
 
     // table plural atau tidak ada huruf s dibelakang
     protected $table = 'pfe';
+
+    
 }

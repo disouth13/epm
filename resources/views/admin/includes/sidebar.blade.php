@@ -61,12 +61,12 @@
         </a>
         <div id="ketapang" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Preventif EDC Manhattan</h6>
+                <h6 class="collapse-header">Preventif EDC Ketapang</h6>
                 <a class="collapse-item" href="{{ route('index-psdc-ktp') }}">Pengecekan Suhu</a>
-                <a class="collapse-item" href="cards.html">Ruang Server</a>
-                <a class="collapse-item" href="cards.html">Pengecekan Apar</a>
-                <a class="collapse-item" href="cards.html">Pengecekan AC</a>
-                <a class="collapse-item" href="cards.html">Pengecekan UPS</a>
+                <a class="collapse-item" href="{{ route('index-prs-ktp') }}">Ruang Server</a>
+                <a class="collapse-item" href="{{ route('index-pfe-ktp') }}">Pengecekan Apar</a>
+                <a class="collapse-item" href="{{ route('index-ppak-ktp') }}">Pengecekan AC</a>
+                <a class="collapse-item" href="{{ route('index-mu-ktp') }}">Pengecekan UPS</a>
                 <hr>
                 <a class="collapse-item" href="cards.html">Pengcekan Vicon</a>
 

@@ -18,7 +18,7 @@ class PsdcController extends Controller
         //menampilkan data bulan dan tahun
         $month = carbon::now();
         $year = carbon::now();
-        $psdcIndexGetData = Psdc::join('users', 'users.id', '=', 'psdcs.users_id')->where('location', '=', 'Ketapang')->whereMonth('periode', '=', $month)
+        $psdcIndexGetData = Psdc::join('users', 'users.id', '=', 'psdcs.users_id')->Select('*', 'psdcs.id AS psdcs_id')->where('location', '=', 'Ketapang')->whereMonth('periode', '=', $month)
                                            ->whereYear('periode', '=', $year)->latest('psdcs.created_at')->get();
 
         return view('admin.ktp.psdc.index', compact('psdcIndexGetData'));

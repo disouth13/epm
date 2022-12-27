@@ -74,9 +74,9 @@
                                             </td>
                                             <td>{{ date('F Y',strtotime($prsItem->periode)) }}</td>
                                             <td class="text-center">    
-                                                <a href="{{ route('view-prs', $prsItem->id) }}" class="btn btn-primary btn-sm mb-1" title="Lihat Data"><i class="bi bi-binoculars-fill"></i></a>
-                                                <a href="{{ route('edit-prs', $prsItem->id) }}" class="btn btn-warning btn-sm mb-1" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
-                                                <a href="{{ route('delete-prs', $prsItem->id) }}" class="btn btn-danger btn-sm mb-1" title="Hapus Data" id="delete"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="{{ route('view-prs', $prsItem->prs_id) }}" class="btn btn-primary btn-sm mb-1" title="Lihat Data"><i class="bi bi-binoculars-fill"></i></a>
+                                                <a href="{{ route('edit-prs', $prsItem->prs_id) }}" class="btn btn-warning btn-sm mb-1" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="{{ route('delete-prs', $prsItem->prs_id) }}" class="btn btn-danger btn-sm mb-1" title="Hapus Data" id="delete"><i class="fas fa-trash-alt"></i></a>
                                                 
                                             </td>
                                         </tr>

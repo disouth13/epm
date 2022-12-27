@@ -1,33 +1,37 @@
 <?php
 
-namespace App\Http\Controllers\Mht;
+namespace App\Http\Controllers\Ktp;
 
 use Image;
 
 use App\Models\Mu;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class MuController extends Controller
+
+class MuKtpController extends Controller
 {
+    //method IndexMuKtp
     public function IndexMu()
     {
         //menampilkan data bulan dan tahun
         $month = carbon::now();
         $year = carbon::now();
-        $muIndexGetData = Mu::join('users', 'users.id', '=', 'mus.users_id')->Select('*', 'mus.id AS mus_id')->where('location', '=', 'Manhattan')->whereMonth('periode', '=', $month)
+        $muIndexGetData = Mu::join('users', 'users.id', '=', 'mus.users_id')->Select('*', 'mus.id AS mus_id')->where('location', '=', 'Ketapang')->whereMonth('periode', '=', $month)
                                         ->whereYear('periode', '=', $year)->latest('mus.created_at')->get();
                                         
-        return view('admin.mht.mu.index', compact('muIndexGetData'));
+        return view('admin.ktp.mu.index', compact('muIndexGetData'));
     } //end method
 
+    // method AddMuKtp
     public function AddMu()
     {
-        return view('admin.mht.mu.add');
+        return view('admin.ktp.mu.add');
     } //end method
 
+    //method MU store ktp
     public function StoreMu(Request $request)
     {
         // membuat validasi pada form
@@ -54,21 +58,20 @@ class MuController extends Controller
             ],
         );
 
-        // fungsi conditional
+         // fungsi conditional
         if ($request->file('photo')) {
             $image = $request->file('photo');
             $name_generate = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
             // image intervantion
-            Image::make($image)->resize(474, 484)->save('upload/mht/mu/'.$name_generate);
+            Image::make($image)->resize(474, 484)->save('upload/ktp/mu/'.$name_generate);
 
-            $saveUrl = 'upload/mht/mu/'.$name_generate;
+            $saveUrl = 'upload/ktp/mu/'.$name_generate;
 
         };
 
-
-         // save data
-        Mu::insert([
+          // save data
+          Mu::insert([
             'users_id'      => Auth::user()->id,
             'area'          => $request->area,
             'pic'           => $request->pic,
@@ -86,22 +89,25 @@ class MuController extends Controller
             'alert-type'    =>  'success'
         );
 
-        return redirect()->route('index-mu')->with($notification);
+        return redirect()->route('index-mu-ktp')->with($notification);
+    
+    } //end method store
 
-    } //end method
-
+    // method viewMu Ktp
     public function ViewMu($id)
     {
         $viewDataMu = Mu::findOrFail($id);
-        return view('admin.mht.mu.view', compact('viewDataMu'));
+        return view('admin.ktp.mu.view', compact('viewDataMu'));
     } //end method
 
+    // method EditMu Ktp
     public function EditMu($id)
     {
         $ambilDataMu = Mu::findOrFail($id);
-        return view('admin.mht.mu.edit', compact('ambilDataMu'));
+        return view('admin.ktp.mu.edit', compact('ambilDataMu'));
     } //end method
 
+    // method updateMu Ktp
     public function UpdateMu(Request $request)
     {
         $updateDataMuID = $request->id;
@@ -109,7 +115,7 @@ class MuController extends Controller
         // membuat validasi pada form
         $request->validate(
             [
-                'photo'             => 'required',
+                
                 'area'              => 'required',
                 'pic'               => 'required',
                 'merek'             => 'required',
@@ -119,7 +125,7 @@ class MuController extends Controller
             ],
 
             [
-                'photo.required'                => 'Silahkan Upload Foto!',
+                
                 'area.required'                 => 'Silahkan Pilih Area!',
                 'pic.required'                  => 'Anda belum input PIC!',
                 'merek.required'                => 'Silahkan Pilih Merek!',
@@ -141,39 +147,63 @@ class MuController extends Controller
             $name_generate = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
             // image intervantion
-            Image::make($image)->resize(474, 484)->save('upload/mht/mu/'.$name_generate);
+            Image::make($image)->resize(474, 484)->save('upload/ktp/mu/'.$name_generate);
 
-            $saveUrl = 'upload/mht/mu/'.$name_generate;
+            $saveUrl = 'upload/ktp/mu/'.$name_generate;
+
+              // update data
+            Mu::findOrFail($updateDataMuID)->update([
+
+                // namadariDB      nmdariForm
+                'users_id'      => Auth::user()->id,
+                'area'          => $request->area,
+                'pic'           => $request->pic,
+                'merek'         => $request->merek,
+                'keterangan'    => $request->keterangan,
+                'kondisi'       => $request->kondisi,
+                'periode'       => $request->periode,
+                'photo'         => $saveUrl,
+                'created_at'     => Carbon::now(),
+            ]);
+
+             // notif message
+            $notification = array(
+                'message'       =>  'Data berhasil disimpan',
+                'alert-type'    =>  'success'
+            );
+
+            return redirect()->route('index-mu-ktp')->with($notification);
+
+        } else{
+            
+             // update data
+            Mu::findOrFail($updateDataMuID)->update([
+
+                // namadariDB      nmdariForm
+                'users_id'      => Auth::user()->id,
+                'area'          => $request->area,
+                'pic'           => $request->pic,
+                'merek'         => $request->merek,
+                'keterangan'    => $request->keterangan,
+                'kondisi'       => $request->kondisi,
+                'periode'       => $request->periode,
+                'created_at'     => Carbon::now(),
+            ]);
+
+            // notif message
+            $notification = array(
+                'message'       =>  'Data berhasil disimpan',
+                'alert-type'    =>  'success'
+            );
+
+            return redirect()->route('index-mu-ktp')->with($notification);
 
         };
 
-
-         // update data
-        Mu::findOrFail($updateDataMuID)->update([
-
-            // namadariDB      nmdariForm
-            'users_id'      => Auth::user()->id,
-            'area'          => $request->area,
-            'pic'           => $request->pic,
-            'merek'         => $request->merek,
-            'keterangan'    => $request->keterangan,
-            'kondisi'       => $request->kondisi,
-            'periode'       => $request->periode,
-            'photo'         => $saveUrl,
-            'created_at'     => Carbon::now(),
-        ]);
-
-        // notif message
-        $notification = array(
-            'message'       =>  'Data berhasil disimpan',
-            'alert-type'    =>  'success'
-        );
-
-        return redirect()->route('index-mu')->with($notification);
-    
-    } //end method
+    } //end method updateMu Ktp
 
 
+    // method delete Mu Ktp
     public function DeleteMu($id)
     {
         $deleteMuID = Mu::findOrFail($id);
@@ -189,6 +219,7 @@ class MuController extends Controller
 
         return redirect()->back()->with($notification);
 
-    }
+    } //end method delete mu Ktp
+    
 
 }

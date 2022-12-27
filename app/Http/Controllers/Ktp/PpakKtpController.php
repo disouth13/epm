@@ -1,35 +1,36 @@
 <?php
 
-namespace App\Http\Controllers\Mht;
+namespace App\Http\Controllers\Ktp;
+
 
 use Image;
 
-
 use App\Models\Ppak;
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
-class PpakController extends Controller
+class PpakKtpController extends Controller
 {
-    //Method indexPpak
+    //method indexPpak Ktp
     public function IndexPpak()
     {
-        //menampilkan data bulan dan tahun ini
-        $month = carbon::now();
-        $year = carbon::now();
+           //menampilkan data bulan dan tahun
+            $month = carbon::now();
+            $year = carbon::now();
+            $ppakIndexGetData = Ppak::Join('users', 'users.id', '=', 'ppaks.users_id')->Select('*', 'ppaks.id AS ppak_id')->where('location', '=', 'Ketapang')->whereMonth('periode', '=', $month)->whereYear('periode', '=', $year)->latest('ppaks.created_at')->get();
 
-        $ppakIndexGetData = Ppak::Join('users', 'users.id', '=', 'ppaks.users_id')->Select('*', 'ppaks.id AS ppak_id')->where('location', '=', 'Manhattan')->whereMonth('periode', '=', $month)->whereYear('periode', '=', $year)->latest('ppaks.created_at')->get();
-        
-        return view('admin.mht.ppak.index', compact('ppakIndexGetData'));
-    } //end method ppak
+            return view('admin.ktp.ppak.index', compact('ppakIndexGetData'));
+    
+    } //end method
 
-    // method PpakAdd
+    // method addPPak ktp
     public function AddPpak()
     {
-        return view('admin.mht.ppak.add');
-    } //end method
+        return view('admin.ktp.ppak.add');
+    }//end method addPPak ktp
+
 
     public function StorePpak(Request $request)
     {
@@ -65,9 +66,9 @@ class PpakController extends Controller
             $name_generate = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
             // image intervantion
-            Image::make($image)->resize(474, 484)->save('upload/mht/ppak/'.$name_generate);
+            Image::make($image)->resize(474, 484)->save('upload/ktp/ppak/'.$name_generate);
 
-            $saveUrl = 'upload/mht/ppak/'.$name_generate;
+            $saveUrl = 'upload/ktp/ppak/'.$name_generate;
 
         };
 
@@ -92,22 +93,25 @@ class PpakController extends Controller
             'alert-type'    =>  'success'
         );
 
-        return redirect()->route('index-ppak')->with($notification);
+        return redirect()->route('index-ppak-ktp')->with($notification);
 
     } //end method
+
 
     public function ViewPpak($id)
     {
         $viewDataPpak = Ppak::findOrFail($id);
-        return view('admin.mht.ppak.view', compact('viewDataPpak'));
+        return view('admin.ktp.ppak.view', compact('viewDataPpak'));
     } //end method
+
 
     public function EditPpak($id)
     {
         $ambilDataPpak = Ppak::findOrFail($id);
-        return view('admin.mht.ppak.edit', compact('ambilDataPpak'));
+        return view('admin.ktp.ppak.edit', compact('ambilDataPpak'));
     } //end method
 
+    //method updatePPak Ktp
     public function UpdatePpak(Request $request)
     {
         $updateDataPpakID = $request->id;
@@ -149,9 +153,9 @@ class PpakController extends Controller
             $name_generate = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
             // image intervantion
-            Image::make($image)->resize(474, 484)->save('upload/mht/ppak/'.$name_generate);
+            Image::make($image)->resize(474, 484)->save('upload/ktp/ppak/'.$name_generate);
 
-            $saveUrl = 'upload/mht/ppak/'.$name_generate;
+            $saveUrl = 'upload/ktp/ppak/'.$name_generate;
 
         };
 
@@ -178,10 +182,12 @@ class PpakController extends Controller
             'alert-type'    =>  'success'
         );
 
-        return redirect()->route('index-ppak')->with($notification);
+        return redirect()->route('index-ppak-ktp')->with($notification);
     
-    } //end method
+    } //end method update
 
+
+    // delete ppak ktp
     public function DeletePpak($id)
     {
         $deletePpakID = Ppak::findOrFail($id);
@@ -197,7 +203,11 @@ class PpakController extends Controller
 
         return redirect()->back()->with($notification);
 
-    }
+    } //end method delete ppak ktp
+
+
+
+
 
 
 

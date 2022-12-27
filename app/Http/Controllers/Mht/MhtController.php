@@ -18,7 +18,7 @@ class MhtController extends Controller
         $month = carbon::now();
         $year = carbon::now();
 
-        $psdcIndexGetData = Psdc::join('users', 'users.id', '=', 'psdcs.users_id')->where('location', '=', 'Manhattan')->whereMonth('periode', '=', $month)
+        $psdcIndexGetData = Psdc::join('users', 'users.id', '=', 'psdcs.users_id')->Select('*', 'psdcs.id AS psdcs_id')->where('location', '=', 'Manhattan')->whereMonth('periode', '=', $month)
                                                                                     ->whereYear('periode', '=', $year)->latest('psdcs.created_at')->get();
 
 

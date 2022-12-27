@@ -45,9 +45,9 @@
                                 <label for="merek" class="col-form-label">Type/Merek</label>
                                 <input type="text" name="merek" id="merek" class="form-control" value="Eaton 1kva" readonly>
 
-                                <label for="pic">Penanggung Jawab</label>
+                                <label for="pic" class="col-form-label">Penanggung Jawab</label>
                                 <input type="text" name="pic" id="pic" class="form-control">
-                        
+                                
                                 <label for="area" class="col-form-label">Area</label>
                                 <select id="area" name="area" class="form-control form-select">
                                     <option selected>Pilih Area</option>
@@ -105,7 +105,7 @@
                             </div>
 
                             <div class="col-md-2">
-                                <a href="{{ route('index-ppak') }}" class="btn btn-secondary btn-block shadow-sm"><i class="fa fa-backward mr-2"></i> Kembali</a>
+                                <a href="{{ route('index-mu') }}" class="btn btn-secondary btn-block shadow-sm"><i class="fa fa-backward mr-2"></i> Kembali</a>
                             </div>
                         </div>
                 </form>

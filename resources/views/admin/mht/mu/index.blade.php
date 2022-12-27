@@ -74,9 +74,9 @@
                                             </td>
                                             <td>{{ date('F Y',strtotime($muItem->periode)) }}</td>
                                             <td class="text-center">    
-                                                <a href="{{ route('view-mu', $muItem->id) }}" class="btn btn-primary btn-sm mb-1" title="Lihat Data"><i class="bi bi-binoculars-fill"></i></a>
-                                                <a href="{{ route('edit-mu', $muItem->id) }}" class="btn btn-warning btn-sm mb-1" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
-                                                <a href="{{ route('delete-mu', $muItem->id) }}" class="btn btn-danger btn-sm mb-1" title="Hapus Data" id="delete"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="{{ route('view-mu', $muItem->mus_id) }}" class="btn btn-primary btn-sm mb-1" title="Lihat Data"><i class="bi bi-binoculars-fill"></i></a>
+                                                <a href="{{ route('edit-mu', $muItem->mus_id) }}" class="btn btn-warning btn-sm mb-1" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="{{ route('delete-mu', $muItem->mus_id) }}" class="btn btn-danger btn-sm mb-1" title="Hapus Data" id="delete"><i class="fas fa-trash-alt"></i></a>
                                                 
                                             </td>
                                         </tr>

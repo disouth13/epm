@@ -1,42 +1,43 @@
 <?php
 
-namespace App\Http\Controllers\Mht;
+namespace App\Http\Controllers\Ktp;
 
 use Image;
 use App\Models\Prs;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-class PrsController extends Controller
+class PrsKtpController extends Controller
 {
-    // method index IndexPrs
+    //method indexPRS Ktp
     public function IndexPrs()
     {
-
         //menampilkan data bulan dan tahun
         $month = carbon::now();
         $year = carbon::now();
-        $prsIndexGetData = Prs::join('users', 'users.id', '=', 'prs.users_id')->Select('*', 'prs.id AS prs_id')->where('location', '=', 'Manhattan')->whereMonth('periode', '=', $month)
+        $prsIndexGetData = Prs::join('users', 'users.id', '=', 'prs.users_id')->Select('*', 'prs.id AS prs_id')->where('location', '=', 'Ketapang')->whereMonth('periode', '=', $month)
                                         ->whereYear('periode', '=', $year)->latest('prs.created_at')->get();
+        return view('admin.ktp.prs.index', compact('prsIndexGetData'));
+    } //end method
 
-
-        return view('admin.mht.prs.index', compact('prsIndexGetData'));
-    }
-
+    // method AddPrs ktp
     public function AddPrs()
     {
-        return view('admin.mht.prs.add');
-    }
+        return view('admin.ktp.prs.add');
+    } //end method
 
+    //method ViewPrs Ktp
     public function ViewPrs($id)
     {
         $viewDataPrs = Prs::findOrFail($id);
-        return view('admin.mht.prs.view', compact('viewDataPrs'));
-    }
+        return view('admin.ktp.prs.view', compact('viewDataPrs'));
+    } //end method
 
+    //method StorePrs ktp
     public function StorePrs(Request $request)
     {
         //Membuat validasi form
@@ -58,9 +59,9 @@ class PrsController extends Controller
             $name_generate = hexdec(uniqid()).'.'.$imageBefore->getClientOriginalExtension();
 
             // image intervantion
-            Image::make($imageBefore)->resize(474, 484)->save('upload/mht/prs/before/'.$name_generate);
+            Image::make($imageBefore)->resize(474, 484)->save('upload/ktp/prs/before/'.$name_generate);
 
-            $saveUrlBefore = 'upload/mht/prs/before/'.$name_generate;
+            $saveUrlBefore = 'upload/ktp/prs/before/'.$name_generate;
 
         };
         
@@ -69,9 +70,9 @@ class PrsController extends Controller
             $name_generate = hexdec(uniqid()).'.'.$imageAfter->getClientOriginalExtension();
 
             // image intervantion
-            Image::make($imageAfter)->resize(474, 484)->save('upload/mht/prs/after/'.$name_generate);
+            Image::make($imageAfter)->resize(474, 484)->save('upload/ktp/prs/after/'.$name_generate);
 
-            $saveUrlAfter = 'upload/mht/prs/after/'.$name_generate;
+            $saveUrlAfter = 'upload/ktp/prs/after/'.$name_generate;
 
 
             // save data
@@ -92,20 +93,23 @@ class PrsController extends Controller
                 'alert-type'    =>  'success'
             );
     
-            return redirect()->route('index-prs')->with($notification);
+            return redirect()->route('index-prs-ktp')->with($notification);
 
 
         };
 
     } //end method
 
+    //method EditPRS Ktp
     public function EditPrs($id)
     {
         $ambilDataPrs = Prs::findOrFail($id);
 
-        return view('admin.mht.prs.edit', compact('ambilDataPrs'));
+        return view('admin.ktp.prs.edit', compact('ambilDataPrs'));
     } //end method
 
+
+    //method updatePRS ktp
     public function UpdatePrs(Request $request)
     {
         $updateDataPrsID = $request->id;
@@ -122,7 +126,7 @@ class PrsController extends Controller
             ],
 
             [
-           
+        
                 'photoBefore.required'          => 'Foto Berfore belum di upload',
                 'photoAfter.required'           => 'Foto After belum di upload',
                 'area.required'                 => 'Data area belum Pilih',
@@ -144,14 +148,14 @@ class PrsController extends Controller
             $name_generate = hexdec(uniqid()).'.'.$imageBefore->getClientOriginalExtension();
 
             // image intervantion
-            Image::make($imageBefore)->resize(474, 484)->save('upload/mht/prs/before/'.$name_generate);
+            Image::make($imageBefore)->resize(474, 484)->save('upload/ktp/prs/before/'.$name_generate);
 
-            $saveUrlBefore = 'upload/mht/prs/before/'.$name_generate;
+            $saveUrlBefore = 'upload/ktp/prs/before/'.$name_generate;
 
         };
         
         if ($request->file('photoAfter')) {
-           
+        
             $imageDelAfter = Prs::findOrFail($updateDataPrsID);
             unlink($imageDelAfter->photoAfter);
 
@@ -159,9 +163,9 @@ class PrsController extends Controller
             $name_generate = hexdec(uniqid()).'.'.$imageAfter->getClientOriginalExtension();
 
             // image intervantion
-            Image::make($imageAfter)->resize(474, 484)->save('upload/mht/prs/after/'.$name_generate);
+            Image::make($imageAfter)->resize(474, 484)->save('upload/ktp/prs/after/'.$name_generate);
 
-            $saveUrlAfter = 'upload/mht/prs/after/'.$name_generate;
+            $saveUrlAfter = 'upload/ktp/prs/after/'.$name_generate;
 
 
             // update data
@@ -185,7 +189,7 @@ class PrsController extends Controller
                 'alert-type'    =>  'success'
             );
     
-            return redirect()->route('index-prs')->with($notification);
+            return redirect()->route('index-prs-ktp')->with($notification);
 
 
         };
@@ -193,6 +197,8 @@ class PrsController extends Controller
         
     } //end method
 
+
+    //method deletePRS ktp
     public function DeletePrs($id)
     {
 
@@ -214,4 +220,6 @@ class PrsController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+
 }
