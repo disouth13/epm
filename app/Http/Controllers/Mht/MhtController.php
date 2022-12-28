@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Auth;
 class MhtController extends Controller
 {
     // method IndexPsdc
-    public function IndexPsdc()
+    public function IndexPsdc(Request $request)
     {
+
         //menampilkan data bulan dan tahun ini
         $month = carbon::now();
         $year = carbon::now();
