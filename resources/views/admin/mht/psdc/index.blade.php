@@ -42,6 +42,8 @@
                                         <i class="bi bi-funnel"></i> Filter
                                     </button>
                                     <ul class="dropdown-menu">
+                                        <li><input type="text" class="form-control col-12 m-3 mb-3" style="height: 30px; width: auto;" name="cariData" id="" placeholder="Cari data..."></li>
+                                        <div class="dropdown-divider"></div>
                                         <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-calendar mr-2"></i>Periode</button></li>
                                         <li><button class="dropdown-item" type="button"><i class="bi bi-binoculars mr-2"></i>Kondisi</button></li>
                                         
@@ -127,8 +129,9 @@
                 <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label for="periode1" class="col-form-label">Mulai Periode</label>
-                        <input type="date" class="form-control" id="periode1" name="periode1">
+                        <label for="periode" class="col-form-label">Mulai Periode</label>
+                        <input type="date" class="form-control" id="periode" name="periode">
+
                     </div>
 
                     <div class="mb-3">
@@ -143,6 +146,8 @@
             </div>
             </div>
         </div>
+
+       
 
 
 

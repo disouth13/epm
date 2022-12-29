@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Auth;
 class MhtController extends Controller
 {
     // method IndexPsdc
-    public function IndexPsdc(Request $request)
+    public function IndexPsdc()
     {
+
 
         //menampilkan data bulan dan tahun ini
         $month = carbon::now();
@@ -21,6 +22,7 @@ class MhtController extends Controller
 
         $psdcIndexGetData = Psdc::join('users', 'users.id', '=', 'psdcs.users_id')->Select('*', 'psdcs.id AS psdcs_id')->where('location', '=', 'Manhattan')->whereMonth('periode', '=', $month)
                                                                                     ->whereYear('periode', '=', $year)->latest('psdcs.created_at')->get();
+
 
 
         return view('admin.mht.psdc.index', compact('psdcIndexGetData'));
